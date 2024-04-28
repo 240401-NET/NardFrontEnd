@@ -1,0 +1,7 @@
+#thenav {
+  position: absolute;
+  z-index: 20000;
+  background-color: antiquewhite;
+  height: 120px;
+  width: 100%;
+}

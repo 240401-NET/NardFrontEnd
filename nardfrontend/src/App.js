@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BattlePage from "./Components/BattlePages/BattlePage";
+import Nav from "./Nav";
+import Leaderboard from "./Components/SelectionPage/Leaderboard";
+import Pokexamp from "./Assets/Pokexamp.png";
+import SelectionPage from "./Components/SelectionPage/SelectionPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+      <Nav />
+      <header
+        id=""
+        className="App-header"
+        style={{ backgroundImage: `url(${Pokexamp})` }}
+      >
+        <p id="Mtitle">WELCOME TO THE POKEDOME!</p>
       </header>
-    </div>
+      {/* <>
+        <SelectionPage />
+        <BattlePage />
+      </> */}
+      <div>
+        <Routes>
+          <Route path="/" element={<SelectionPage />} />
+          <Route path="/battle" element={<BattlePage />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
