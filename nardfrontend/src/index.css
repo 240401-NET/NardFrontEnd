@@ -30,11 +30,11 @@ code {
 .menu > li {
   margin: 0;
 
-  background-color: white;
+  background-color: rgb(187, 96, 96);
 }
 
 .menu > li:hover {
-  background-color: lightgray;
+  background-color: rgb(86, 13, 13);
 }
 
 .menu > li > button {
@@ -66,6 +66,7 @@ code {
   display: inline-block;
   font-size: 16px;
   margin-top: 80px;
+  border-radius: 30px;
 }
 
 .compdiv {
@@ -88,4 +89,13 @@ code {
 #P2S {
   justify-content: right;
   text-align: right;
+}
+
+#tabletime {
+  background-color: rgb(151, 169, 235);
+  margin-top: 20vh;
+  font-weight: bolder;
+  font-size: 3vh;
+  height: 20vh;
+  width: 100vh;
 }

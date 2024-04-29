@@ -3,7 +3,7 @@ import "./Nav.css";
 
 function Nav() {
   return (
-    <nav>
+    <nav id="thenav">
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -15,6 +15,9 @@ function Nav() {
           <NavLink to="/leaderboard">Leaderboard Page</NavLink>
         </li>
       </ul>
+      <div style={{ display: "flex", justifyContent: "right" }} id="uslogo">
+        NARD INC.
+      </div>
     </nav>
   );
 }

@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #e8ebf1;
   min-height: 30vh;
   display: flex;
   flex-direction: column;
@@ -53,8 +53,12 @@
 }
 
 #Mtitle {
-  color: rgb(0, 2, 2);
+  color: rgb(228, 237, 237);
   font-weight: bolder;
   font-size: 5vh;
-  text-shadow: #282c34;
+  text-shadow: black;
+}
+
+#bitty {
+  background-size: cover;
 }

@@ -6,8 +6,8 @@ function ViewLeaderboardButton() {
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <Link to="/Leaderboard" className="button" name="ViewLeaderboardButton">
-        VIEW LEADERBOARD
+      <Link to="/Leaderboard" name="ViewLeaderboardButton">
+        <button className="btn btn-outline-danger">VIEW LEADERBOARD</button>
       </Link>
     </div>
   );

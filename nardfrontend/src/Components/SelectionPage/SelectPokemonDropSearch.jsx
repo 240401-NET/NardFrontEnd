@@ -30,7 +30,7 @@ function SelectPokemonDropSearch() {
   return (
     <div
       className="selection-page"
-      style={{ display: "flex", justifyContent: "center" }}
+      style={{ display: "flex", justifyContent: "left" }}
     >
       {/* Dropdown to select Pokémon */}
       <select onChange={(e) => handleSelectPokemon(e.target.value)}>

@@ -12,7 +12,7 @@ function Leaderboard() {
         // Example: Fetch data from an API endpoint
         const response = await fetch("/LeaderboardData");
         const data = await response.json();
-        // Update the leaderboardData state with the fetched data
+        // Update the data state with the fetched data
         setLeaderboardData(data);
       } catch (error) {
         console.error("Error fetching leaderboard data:", error);
@@ -24,34 +24,40 @@ function Leaderboard() {
   }, []); // Empty dependency array to ensure the effect runs only once
 
   return (
-    <div>
-      <table className="table table-striped text-light bg-danger bg-opacity-75">
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <table
+        className="table table-striped text-light bg-danger bg-opacity-75"
+        id="tabletime"
+      >
         <thead>
           <tr>
             <th>Pokemon Name</th>
             <th>Wins</th>
-            <th>Loses</th>
+            <th>Losses</th>
             <th>Rank</th>
           </tr>
         </thead>
         <tbody>
-          {leaderboardData.map((data) => {
-            return (
-              <tr key={data.id}>
-                <td>{leaderboardData.name}</td>
-                <td>{leaderboardData.wins}</td>
-                <td>{leaderboardData.loses}</td>
-                <td>{leaderboardData.rank}</td>
-              </tr>
-            );
-          })}
+          {leaderboardData.map((data) => (
+            <tr key={data.id}>
+              <td>{data.name}</td>
+              <td>{data.wins}</td>
+              <td>{data.losses}</td>
+              <td>{data.rank}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
 
       <ul>
-        {/* Map over the leaderboardData array and render leaderboard entries */}
+        {/* Map over the data array and render leaderboard entries */}
         {leaderboardData.map((entry, index) => (
-          <li key={index}>{entry.name}</li> // Adjust to match your data structure
+          <li key={index}>
+            {entry.name}
+            {entry.wins}
+            {entry.losses}
+            {entry.rank}
+          </li> // Adjust to match your data structure
         ))}
       </ul>
     </div>

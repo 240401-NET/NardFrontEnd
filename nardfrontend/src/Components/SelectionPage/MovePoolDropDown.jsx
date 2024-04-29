@@ -51,7 +51,7 @@ function MovePoolDropDown({ selectedPokemonMoves }) {
   return (
     <div
       className="dropdown id='MPDD2' "
-      style={{ display: "flex", justifyContent: "center" }}
+      style={{ display: "flex", justifyContent: "left" }}
     >
       <button onClick={handleOpen}>Select Moves</button>
       {open ? (
