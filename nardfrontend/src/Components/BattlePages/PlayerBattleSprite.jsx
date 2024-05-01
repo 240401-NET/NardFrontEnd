@@ -1,6 +1,6 @@
 import React from "react";
 
-function PlayersSpritesDisplay({ pokemonList, selectedPokemon }) {
+function PlayerBattleSprite({ pokemonList, selectedPokemon }) {
   // Check if pokemonList is empty or undefined
   if (!pokemonList || pokemonList.length === 0) {
     return (
@@ -32,4 +32,4 @@ function PlayersSpritesDisplay({ pokemonList, selectedPokemon }) {
   );
 }
 
-export default PlayersSpritesDisplay;
+export default PlayerBattleSprite;

@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-function DuringBattleMoveDrop({ selectedMoves }) {
-  const [moveList, setMoveList] = useState([]);
-
-  useEffect(() => {
-    const fetchMoveList = async () => {
-      try {
-        const response = await fetch("/Moves/allMoves");
-        const data = await response.json();
-        setMoveList(data);
-      } catch (error) {
-        console.error("Error fetching move list:", error);
-      }
-    };
-
-    fetchMoveList();
-  }, []);
+function DuringBattleMoveDrop({ selectedMoves, moveList }) {
+  if (!moveList || moveList.length === 0) {
+    return <p>No moves available.</p>;
+  }
 
   return (
     <form>
-      <select name="duringbattlemovedrop" namespace="duringbattlemovedrop">
+      <select name="duringbattlemovedrop" id="DBMD">
         <option value="">Select a move</option>
-        {/* Render each move from the moveList */}
         {moveList.map((move) => (
-          // Check if the move is selected
           <option
             key={move.id}
             value={move.name}

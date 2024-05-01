@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import React, { Link } from "react";
 
 function StartBattleMusicButton() {
-  const [isBattleInProgress, setIsBattleInProgress] = useState(false);
+  // const [isBattleInProgress, setIsBattleInProgress] = useState(false);
   //run battle
   //start Battle Music
 
@@ -12,19 +12,22 @@ function StartBattleMusicButton() {
   //     onStartBattle();
   //   };
   // };
-
-  // Function to handle battle initiation
-
-  // Function to handle battle initiation
-  const startBattle = () => {
-    // Set battle in progress
-    setIsBattleInProgress(true);
+  const playBattleMusic = () => {
+    const audio = new Audio("http://localhost:5019/audio/BattleMusic-1.mp3");
+    audio.play();
   };
+  // Function to handle battle initiation
+
+  // Function to handle battle initiation
+  // const startBattle = () => {
+  //   // Set battle in progress
+  //   setIsBattleInProgress(true);
+  // };
 
   // Function to handle music initiation
   const startMusic = () => {
     // Set battle in progress
-    console.log("Music started");
+    playBattleMusic();
   };
 
   return (
@@ -34,7 +37,7 @@ function StartBattleMusicButton() {
         id="BBButton"
         type="button" // Specify type as "button"
         onClick={() => {
-          startBattle();
+          // startBattle();
           startMusic();
         }} // Handle click event
         className="btn btn-primary"

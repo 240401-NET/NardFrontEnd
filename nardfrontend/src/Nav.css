@@ -12,3 +12,33 @@
   font-weight: bolder;
   font-size: 3vh;
 }
+
+.navitem {
+  font-weight: bold;
+  font-size: 2vh;
+  display: flex;
+  justify-content: left;
+  color: beige;
+  text-decoration: none;
+}
+
+a:link {
+  color: rgb(125, 125, 222);
+}
+
+a:visited {
+  color: rgb(210, 186, 210);
+}
+
+a:hover {
+  color: rgb(188, 32, 115);
+}
+
+a:active {
+  color: red;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}

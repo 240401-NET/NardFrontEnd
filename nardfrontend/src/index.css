@@ -65,7 +65,7 @@ code {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-top: 80px;
+  margin-top: 50px;
   border-radius: 30px;
 }
 
@@ -75,20 +75,47 @@ code {
 
 #Battlebox {
   background-color: beige;
-  margin: 100px, 100px, 100px, 100px;
-  padding: 100px, 100px, 100px, 100px;
   text-align: center;
   color: grey;
 }
 
+#P1HP {
+  justify-content: left;
+  text-align: left;
+  margin-left: 20vh;
+}
 #P2HP {
   justify-content: right;
   text-align: right;
+  margin-right: 20vh;
+}
+
+#P1S {
+  justify-content: left;
+  text-align: left;
 }
 
 #P2S {
   justify-content: right;
   text-align: right;
+}
+
+.PlayerOneSprite {
+  border: black 10px solid;
+  height: 25vh;
+}
+
+.PlayerTwoSprite {
+  border: black 10px solid;
+  height: 25vh;
+}
+
+.BPSprites {
+  margin-top: 3vh;
+}
+
+#DBMD {
+  margin-top: 3vh;
 }
 
 #tabletime {
@@ -98,4 +125,77 @@ code {
   font-size: 3vh;
   height: 20vh;
   width: 100vh;
+}
+
+/* .Player {
+
+} */
+
+.selectionPage {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25vh;
+}
+
+.battlePage {
+  /* display: flex; */
+  /* justify-content: space-around; */
+  margin-top: 5vh;
+}
+
+.flexcontent {
+  display: flex;
+  justify-content: center;
+}
+
+.flexitems {
+  display: flex;
+  align-items: center;
+}
+
+.flexfull {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexaround {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flexbetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px); /* Adjust as needed */
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 0;
+  list-style: none;
+}
+
+.dropdown-menu li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-toggle {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
 }
