@@ -7,6 +7,7 @@ import Pokexamp4 from "./Assets/Pokexamp4.png";
 // import Pokexamp from "./Assets/Pokexamp.png";
 import SelectionPage from "./Components/SelectionPage/SelectionPage";
 import Footer from "./Components/Footer";
+import Pokedome from "./Components/Pokedome";
 
 function App() {
   return (
@@ -24,8 +25,8 @@ function App() {
             opacity: ".85",
           }}
         >
-          <p id="Mtitle" className="typed">
-            WELCOME TO THE POKEDOME!
+          <p id="Mtitle">
+            <Pokedome />
           </p>
         </div>
       </header>

@@ -54,7 +54,7 @@ function StartBattleMusicButton({
           id="BBButton"
           type="button"
           onClick={startBattle}
-          className="btn btn-primary"
+          className="btn btn-primary, pulse"
         >
           BEGIN BATTLE
         </button>
