@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #e8ebf1;
-  min-height: 30vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,12 +53,32 @@
 }
 
 #Mtitle {
-  color: rgb(228, 237, 237);
+  color: rgb(14, 6, 11);
   font-weight: bolder;
-  font-size: 5vh;
+  text-shadow: 3px 3px 3px #61dafb;
+  font-size: 8vh;
+  margin-top: 19vh;
   text-shadow: black;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 #bitty {
   background-size: cover;
+}
+
+footer {
+  display: block;
+  position: relative;
+  height: 8vh;
+  background-color: rgba(33, 94, 140, 0.65);
+  color: white;
+  font-weight: bolder;
+  font-size: 18px;
+  justify-content: flex;
+  /* margin-top: 3vh; */
+}
+
+#footertext {
+  margin-top: 12px;
+  justify-content: flex;
 }

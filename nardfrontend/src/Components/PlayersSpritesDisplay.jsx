@@ -16,7 +16,6 @@ function PlayersSpritesDisplay({ pokemonList, selectedPokemon }) {
 
   // Get the sprite URL of the selected Pokémon
   const spriteUrl = selectedPokemonData ? selectedPokemonData.sprite : null;
-
   return (
     <div className="player-one-pokemon-sprite" id="P1S">
       {spriteUrl ? (
@@ -26,7 +25,7 @@ function PlayersSpritesDisplay({ pokemonList, selectedPokemon }) {
           style={{ width: "200px", height: "200px" }}
         />
       ) : (
-        <p>Select a Pokemon</p>
+        <p>.</p>
       )}
     </div>
   );

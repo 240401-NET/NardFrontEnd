@@ -15,6 +15,7 @@ function Nav() {
           <NavLink to="/leaderboard">Leaderboard Page</NavLink>
         </li>
       </ul>
+      <div style={{ display: "flex", justifyContent: "center" }}></div>
       <div style={{ display: "flex", justifyContent: "right" }} id="uslogo">
         <NavLink to="https://github.com/240401-NET/NardBackEnd/blob/main/README.md">
           NARD INC.

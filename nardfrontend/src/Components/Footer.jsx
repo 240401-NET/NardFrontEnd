@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer>
       <div className="container">
-        <div className="row">
+        {/* <div className="row">
           <div className="col">
             <h4>About Us</h4>
             <p>A brief description of your app and its purpose.</p>
@@ -48,11 +48,11 @@ function Footer() {
           </div>
         </div>
         <div className="row">
-          <div className="col">
-            <p>&copy; 2024 Your App Name. All rights reserved.</p>
-          </div>
-        </div>
+          <div className="col"> */}
+        <p id="footertext">&copy; 2024 NARD Inc. All rights reserved.</p>
       </div>
+      {/* </div> */}
+      {/* </div> */}
     </footer>
   );
 }

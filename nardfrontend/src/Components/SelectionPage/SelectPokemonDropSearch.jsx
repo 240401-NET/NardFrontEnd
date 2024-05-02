@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import PlayersSpritesDisplay from "../PlayersSpritesDisplay";
 import MovePoolDropDown from "./MovePoolDropDown";
 import PlayerBattleSprite from "../BattlePages/PlayerBattleSprite";
+import RandomizedOpponentButton from "./RandomizedOpponentButton";
+import StartBattleMusicButton from "./StartBattleMusicButton";
 
 function SelectPokemonDropSearch() {
   const [selectedPokemon, setSelectedPokemon] = useState("");
@@ -14,9 +16,14 @@ function SelectPokemonDropSearch() {
     setSelectedPokemon(pokemon);
     setSelectedMoves([]); // Reset selected moves when a new Pokemon is chosen
   };
-
   const handleSelectMoves = (moves) => {
     setSelectedMoves(moves);
+  };
+
+  // Function to handle selecting an opponent
+  const handleSelectOpponent = (opponent) => {
+    // Handle opponent selection logic here
+    console.log("Selected opponent:", opponent);
   };
 
   // Function to fetch Pokémon data and populate the dropdown
@@ -44,11 +51,23 @@ function SelectPokemonDropSearch() {
     fetchPokemonList();
   }, []);
 
+  useEffect(() => {
+    console.log("Pokemon list:", pokemonList); // Log the pokemonList state
+  }, [pokemonList]);
+
+  useEffect(() => {
+    console.log("Selected Pokemon:", selectedPokemon);
+  }, [selectedPokemon]);
+
+  useEffect(() => {
+    console.log("Selected Moves:", selectedMoves);
+  }, [selectedMoves]);
+
   return (
     <div className="selection-page">
       {pokemonListError && <p>{pokemonListError}</p>}
       {/* Dropdown to select Pokémon */}
-      <select onChange={(e) => handleSelectPokemon(e.target.value)}>
+      <select id="SPButt" onChange={(e) => handleSelectPokemon(e.target.value)}>
         <option value="">Select a Pokémon</option>
         {pokemonList.map((pokemon) => (
           <option key={pokemon.id} value={pokemon.name}>
@@ -56,15 +75,15 @@ function SelectPokemonDropSearch() {
           </option>
         ))}
       </select>
+
       {/* Display selected Pokémon sprite */}
       <PlayersSpritesDisplay
         pokemonList={pokemonList}
         selectedPokemon={selectedPokemon}
       />
-      {/* <PlayerBattleSprite
-        selectedPokemon={selectedPokemon}
-        pokemonList={pokemonList}
-      /> */}
+      {/* <StartBattleMusicButton selectedPokemonId={selectedPokemonId} /> */}
+      <h1 id="PlayerTitle">{selectedPokemon.toUpperCase()}</h1>
+
       {/* Display selected Pokémon moves */}
       {selectedPokemon && (
         <MovePoolDropDown
@@ -73,11 +92,18 @@ function SelectPokemonDropSearch() {
           onSelectMoves={handleSelectMoves} // Pass onSelectMoves function as a prop
         />
       )}
+      {selectedPokemon && (
+        <PlayerBattleSprite
+          selectedPokemon={selectedPokemon}
+          pokemonList={pokemonList}
+        />
+      )}
+
+      {/* <RandomizedOpponentButton onSelectOpponent={handleSelectOpponent} /> */}
+
       {/* Display selected Pokémon details */}
       {selectedPokemon && (
         <div>
-          <h2>Selected Pokémon:</h2>
-          <p>Name: {selectedPokemon}</p>
           {/* You can display other details of the selected Pokémon here  */}
         </div>
       )}

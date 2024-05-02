@@ -19,10 +19,11 @@ function Leaderboard() {
         setError("Error fetching leaderboard data. Please try again later.");
       }
     };
+    console.log(leaderboardData);
 
     fetchLeaderboardData();
   }, []);
-
+  console.log(leaderboardData);
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       {error ? (
@@ -35,18 +36,18 @@ function Leaderboard() {
           <thead>
             <tr>
               <th>Pokemon Name</th>
+              <th>Rank</th>
               <th>Wins</th>
               <th>Losses</th>
-              <th>Rank</th>
             </tr>
           </thead>
           <tbody>
             {leaderboardData.map((data) => (
               <tr key={data.id}>
-                <td>{data.name}</td>
-                <td>{data.wins}</td>
-                <td>{data.losses}</td>
+                <td>{data.pokemonName}</td>
                 <td>{data.rank}</td>
+                <td>{data.win}</td>
+                <td>{data.loss}</td>
               </tr>
             ))}
           </tbody>

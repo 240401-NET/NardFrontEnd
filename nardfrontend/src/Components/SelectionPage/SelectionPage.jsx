@@ -23,7 +23,7 @@ function SelectionPage() {
           </div> */}
         </div>
         <div className="Player">
-          <div className="flexaround">
+          <div className="compdiv">
             <RandomizedOpponentButton />
           </div>
           {/* <div className="compdiv">

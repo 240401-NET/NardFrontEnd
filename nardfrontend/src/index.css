@@ -1,3 +1,76 @@
+.background-container {
+  /* Set the background image */
+  /* background-image: url("./Assets/bgart.png"); */
+  /* margin-bottom: 200px; */
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.9)
+  );
+  background-size: 6%;
+  background-repeat: repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  z-index: -100;
+}
+
+.background-container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-size: 62%;
+  background-image: url("./Assets/bgart.png");
+  background-repeat: repeat;
+  animation: scroll 2000s linear infinite;
+  opacity: 0.1;
+  z-index: -20;
+  margin-bottom: 200px;
+}
+@keyframes scroll {
+  0% {
+    background-position: -3000px 3000px;
+  }
+  12.5% {
+    background-position: 0px -3000px;
+  }
+  25% {
+    background-position: -3000px 0px;
+  }
+  37.5% {
+    background-position: 0px 3000px;
+  }
+  50% {
+    background-position: -3000px 3000px;
+  }
+  62.5% {
+    background-position: 0px -3000px;
+  }
+  75% {
+    background-position: -3000px 0px;
+  }
+  87.5% {
+    background-position: 0px 3000px;
+  }
+  100% {
+    background-position: -3000px 3000px;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,6 +78,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url("./Assets/bgart.png");
+  opacity: 0.4;
+  background-repeat: repeat; */
 }
 
 code {
@@ -12,9 +88,9 @@ code {
     monospace;
 }
 
-.dropdown {
+/* .dropdown {
   position: relative;
-}
+} */
 
 .menu {
   position: absolute;
@@ -29,25 +105,30 @@ code {
 
 .menu > li {
   margin: 0;
-
-  background-color: rgb(187, 96, 96);
+  bottom: calc(100% + 10px);
+  background-color: rgba(43, 96, 171, 0.55);
+  color: rgb(6, 0, 0);
 }
 
 .menu > li:hover {
   background-color: rgb(86, 13, 13);
+  color: #e5e5f0;
+  transform: scale(1.2);
 }
 
 .menu > li > button {
   width: 100%;
   height: 100%;
   text-align: left;
-
+  font-size: 18px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bolder;
   background: none;
   color: inherit;
   border: none;
   padding: 5px;
   margin: 0;
-  font: inherit;
+  /* font: inherit; */
   cursor: pointer;
 }
 
@@ -55,22 +136,131 @@ code {
   background-color: aqua;
 }
 
-#BBButton {
-  size: 200vh;
-  background-color: rgb(97, 111, 216);
+#SPButt {
+  background-color: rgba(0, 1, 8, 0.85);
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 12px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin-top: 50px;
+  font-size: 22px;
+  margin-top: 10px;
   border-radius: 30px;
+  border: 5px rgb(249, 247, 247) double;
+}
+
+#SPButt:hover {
+  background-color: rgba(59, 59, 62, 0.85);
+  transform: scale(1.1);
+}
+
+#BBButton {
+  background-color: rgb(38, 55, 181, 0.85);
+  border: none;
+  color: white;
+  padding: 15px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin-top: 10px;
+  border-radius: 30px;
+  border: 5px rgb(249, 247, 247) double;
+}
+
+#BBButton:hover {
+  background-color: rgb(122, 129, 181);
+  transform: scale(1.1);
+}
+
+#ROButt {
+  background-color: rgb(69, 68, 70, 0.85);
+  border: 5px rgb(253, 251, 251) double;
+  color: white;
+  padding: 15px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  margin-top: 10px;
+  border-radius: 30px;
+}
+
+#ROButt:hover {
+  background-color: rgb(140, 138, 141);
+  transform: scale(1.1);
+}
+
+#VLButt {
+  background-color: rgb(176, 184, 62, 0.85);
+  color: black;
+  padding: 15px 10px;
+  margin-bottom: 60%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 30px;
+  border: 5px rgb(249, 247, 247) double;
+}
+
+#VLButt:hover {
+  background-color: rgb(213, 220, 125);
+  transform: scale(1.1);
+}
+
+#MovePoolDrop {
+  font-size: 20px;
+  background-color: #01067c;
+  opacity: 0.75;
+  color: #bab5ec;
+  border-radius: 25px;
+}
+
+#MovePoolDrop:hover {
+  background-color: #2a2fb8;
+  transform: scale(1.2);
+}
+
+#RemoveButt {
+  font-size: 10px;
+  background-color: #373972;
+  opacity: 0.75;
+  color: #bab5ec;
+  border-radius: 25px;
+}
+
+#ConfirmMovesButton {
+  background-color: rgba(37, 4, 75, 0.85);
+  color: rgb(248, 237, 237);
+  padding: 15px 10px;
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 30px;
+}
+
+#ConfirmMovesButton:hover {
+  background-color: rgba(81, 34, 135, 0.85);
+  transform: scale(1.2);
 }
 
 .compdiv {
   margin-bottom: 40px;
+}
+
+#MovesTitle {
+  padding-top: 0;
+  font-size: 30px;
+  color: blue;
+}
+
+#OpMoveList {
+  font-weight: bolder;
+  font-size: 18px;
 }
 
 #Battlebox {
@@ -100,14 +290,26 @@ code {
   text-align: right;
 }
 
+#OpponentTitle {
+  font-size: larger;
+  font-weight: bolder;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#PlayerTitle {
+  color: #01067c;
+}
+
 .PlayerOneSprite {
   border: black 10px solid;
   height: 25vh;
+  width: 30%;
 }
 
 .PlayerTwoSprite {
   border: black 10px solid;
   height: 25vh;
+  width: 30%;
 }
 
 .BPSprites {
@@ -119,12 +321,24 @@ code {
 }
 
 #tabletime {
-  background-color: rgb(151, 169, 235);
-  margin-top: 20vh;
+  background: linear-gradient(
+    -225deg,
+    #4e58ed 0,
+    #7f82e0 29%,
+    #bab5ec 67%,
+    #e5e5f0 100%
+  );
+  margin-top: 7.5vh;
+  margin-bottom: 7.5vh;
   font-weight: bolder;
-  font-size: 3vh;
-  height: 20vh;
-  width: 100vh;
+  text-shadow: 3px 3px 3px #61dafb;
+  font-size: 4vh;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  height: 35vh;
+  width: 100%;
+  opacity: 0.75;
+  border: 18px rgb(78, 37, 102) double;
+  justify-content: space-around;
 }
 
 /* .Player {
@@ -134,7 +348,7 @@ code {
 .selectionPage {
   display: flex;
   justify-content: space-around;
-  margin-top: 25vh;
+  margin-top: 5vh;
 }
 
 .battlePage {
@@ -199,3 +413,10 @@ code {
   padding: 5px 10px;
   cursor: pointer;
 }
+
+/* body {
+  background: black;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */

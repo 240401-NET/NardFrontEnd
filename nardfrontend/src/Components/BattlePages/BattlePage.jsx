@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import BattleMessage from "./BattleMessage";
 import DuringBattleMoveDrop from "./DuringBattleMoveDrop";
 import PlayerOneHpGauge from "./PlayerOneHpGauge";
@@ -8,20 +9,26 @@ import OpponentsSpritesDisplay from "../OpponentsSpritesDisplay";
 
 function BattlePage() {
   //Window that displays messages during battle
+  const [selectedPokemon, setSelectedPokemon] = useState("");
+
   return (
     <>
       <BattleMessage />
       <div className="battlePage">
+        {/* ($"{{ selectedPokemon }} Vs. {{ randomPokemon }}") */}
+        {/* <h1 id="VsBanner">CHARIZARD Vs. PIKACHU</h1> */}
         <span>
-          <div className="HPGauges">
+          {/* <div className="HPGauges">
             <PlayerOneHpGauge />
             <PlayerTwoHpGauge />
-          </div>
+          </div> */}
         </span>
         <span>
           <div className="BPSprites flexaround">
             <div className="PlayerOneSprite">
-              <PlayerBattleSprite />
+              {selectedPokemon && (
+                <PlayerBattleSprite selectedPokemon={selectedPokemon} />
+              )}
             </div>
             <div className="PlayerTwoSprite">
               <OpponentsSpritesDisplay />
