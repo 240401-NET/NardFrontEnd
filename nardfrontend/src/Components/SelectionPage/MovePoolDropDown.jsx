@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DuringBattleMoveDrop from "../BattlePages/DuringBattleMoveDrop";
+import { PokemonContext } from "../Context/PokemonContext";
 
 function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
-  const [selectedMoves, setSelectedMoves] = useState([]);
+  const { selectedMoves, setSelectedMoves } = useContext(PokemonContext);
   const [open, setOpen] = useState(false);
   const [confirmButtonText, setConfirmButtonText] =
     useState("Confirm Selection");
@@ -36,6 +37,7 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
 
   const handleConfirm = () => {
     onSelectMoves(selectedMoves);
+    console.log(selectedMoves);
     setOpen(false); // Close the dropdown after confirming moves
     setConfirmButtonText("Confirmed!");
   };

@@ -1,15 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PlayersSpritesDisplay from "../PlayersSpritesDisplay";
 import MovePoolDropDown from "./MovePoolDropDown";
 import PlayerBattleSprite from "../BattlePages/PlayerBattleSprite";
 import RandomizedOpponentButton from "./RandomizedOpponentButton";
 import StartBattleMusicButton from "./StartBattleMusicButton";
+import { PokemonContext } from "../Context/PokemonContext";
 
 function SelectPokemonDropSearch() {
-  const [selectedPokemon, setSelectedPokemon] = useState("");
+  // const [selectedPokemon, setSelectedPokemon] = useState("");
+  const {
+    selectedPokemon,
+    setSelectedPokemon,
+    selectedMoves,
+    setSelectedMoves,
+  } = useContext(PokemonContext);
   const [pokemonList, setPokemonList] = useState([]);
   const [pokemonListError, setPokemonListError] = useState("");
-  const [selectedMoves, setSelectedMoves] = useState([]);
+  // const [selectedMoves, setSelectedMoves] = useState([]);
 
   // Function to handle selecting a Pokémon
   const handleSelectPokemon = (pokemon) => {
@@ -65,7 +72,7 @@ function SelectPokemonDropSearch() {
 
   return (
     <div className="selection-page">
-      {pokemonListError && <p>{pokemonListError}</p>}
+      {pokemonListError && { pokemonListError }}
       {/* Dropdown to select Pokémon */}
       <select id="SPButt" onChange={(e) => handleSelectPokemon(e.target.value)}>
         <option value="">Select a Pokémon</option>
@@ -92,12 +99,12 @@ function SelectPokemonDropSearch() {
           onSelectMoves={handleSelectMoves} // Pass onSelectMoves function as a prop
         />
       )}
-      {selectedPokemon && (
+      {/* {selectedPokemon && (
         <PlayerBattleSprite
           selectedPokemon={selectedPokemon}
           pokemonList={pokemonList}
         />
-      )}
+      )} */}
 
       {/* <RandomizedOpponentButton onSelectOpponent={handleSelectOpponent} /> */}
 

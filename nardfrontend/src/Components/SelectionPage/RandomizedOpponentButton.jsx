@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import OpponentsSpritesDisplay from "../OpponentsSpritesDisplay";
+import { PokemonContext } from "../Context/PokemonContext";
 
 function RandomizedOpponentButton() {
-  const [randomPokemon, setRandomPokemon] = useState(null);
-  const [randomMoves, setRandomMoves] = useState([]);
+  const { randomPokemon, setRandomPokemon, randomMoves, setRandomMoves } =
+    useContext(PokemonContext);
+  //console.log("dog"); i got that dog in me
+  // const [randomMoves, setRandomMoves] = useState([]);
   const [error, setError] = useState(null);
 
   const handleClick = async () => {
@@ -29,7 +32,8 @@ function RandomizedOpponentButton() {
           throw new Error("Failed to fetch random moves");
         }
         const movesData = await movesResponse.text();
-        setRandomMoves(movesData.split(", "));
+        console.log(movesData);
+        setRandomMoves(movesData);
       } catch (error) {
         console.log("Error fetching random moves:", error.message);
         setError("Error fetching random moves");
@@ -50,9 +54,9 @@ function RandomizedOpponentButton() {
 
   return (
     <div
-      className="button flexaround"
-      // style={{ display: "flex", justifyContent: "right" }}
-      // id="ROButt"
+    // className="button flexaround"
+    // style={{ display: "flex", justifyContent: "right" }}
+    // id="ROButt"
     >
       <div>
         <button
@@ -84,17 +88,17 @@ function RandomizedOpponentButton() {
             style={{ width: "200px", height: "200px" }}
             // className="flexaround"
           />
-          {randomMoves.length > 0 && (
+          {randomMoves && randomMoves.length > 0 && (
             <div>
               <h3 id="MovesTitle">MOVES:</h3>
-              <ol>
-                {randomMoves.length > 0 &&
-                  randomMoves[0].split(", ").map((move, index) => (
+              <ul>
+                {randomMoves &&
+                  randomMoves.split(",").map((move, index) => (
                     <li id="OpMoveList" key={index}>
                       {move}
                     </li>
                   ))}
-              </ol>
+              </ul>
             </div>
           )}
         </div>

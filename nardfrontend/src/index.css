@@ -169,6 +169,22 @@ code {
   border: 5px rgb(249, 247, 247) double;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 500ms linear;
+}
+
 #BBButton:hover {
   background-color: rgb(122, 129, 181);
   transform: scale(1.1);
@@ -181,7 +197,7 @@ code {
   padding: 15px 12px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 22px;
   margin-top: 10px;
   border-radius: 30px;
@@ -269,7 +285,7 @@ code {
   color: grey;
 }
 
-#P1HP {
+/* #P1HP {
   justify-content: left;
   text-align: left;
   margin-left: 20vh;
@@ -278,7 +294,7 @@ code {
   justify-content: right;
   text-align: right;
   margin-right: 20vh;
-}
+} */
 
 #P1S {
   justify-content: left;
@@ -389,7 +405,7 @@ code {
 
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 5px); /* Adjust as needed */
+  top: calc(100% + 5px);
   left: 0;
   background-color: #fff;
   border: 1px solid #ccc;

@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import { PokemonContext } from "../Context/PokemonContext";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-function StartBattleMusicButton({
-  selectedPokemon,
-  randomPokemon,
-  selectedMoves,
-  randomMoves,
-}) {
+function StartBattleMusicButton() {
+  const { selectedPokemon, randomPokemon, selectedMoves, randomMoves } =
+    useContext(PokemonContext);
+
   const playBattleMusic = () => {
     const audio = new Audio("http://localhost:5019/audio/BattleMusic-1.mp3");
     audio.play();
@@ -14,13 +13,18 @@ function StartBattleMusicButton({
   const [createdBattle, setCreatedBattle] = useState(null);
 
   const handleBeginBattle = () => {
+    console.log(selectedMoves ?? "dog");
     if (selectedMoves && randomMoves) {
       // Construct the URL for creating the battle
-      const moves1string = selectedMoves.join("/");
-      const moves2string = randomMoves.join("/");
+      const moves1string = selectedMoves.join(",");
+      console.log(moves1string);
+      const moves2string = randomMoves;
       const url = `http://localhost:5019/Battle/createBattle/${selectedPokemon}/${randomPokemon.id}/${moves1string}/${moves2string}`;
+      console.log(url);
 
-      fetch(url)
+      fetch(url, {
+        method: "POST",
+      })
         .then((response) => {
           if (!response.ok) {
             throw new Error("Failed to create battle");
@@ -33,7 +37,7 @@ function StartBattleMusicButton({
         })
         .catch((error) => {
           alert("Failed to create battle. Please try again later.");
-          console.error("Error creating battle:", error);
+          alert("Errorbattle:", error);
         });
     } else {
       alert("Please select moves before starting the battle.");
@@ -46,7 +50,7 @@ function StartBattleMusicButton({
     handleBeginBattle();
     // Navigate to the BattlePage
   };
-
+  console.log(createdBattle);
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Link to="/battle">
