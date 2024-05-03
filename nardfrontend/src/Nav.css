@@ -8,9 +8,26 @@
   color: whitesmoke;
 }
 
+#RButtdiv {
+  justify-content: flex-end;
+  align-items: end;
+}
+#RButt {
+  justify-content: flex-end;
+  align-items: end;
+  font-weight: bolder;
+  font-size: 3vh;
+  background-color: #0d569e;
+  color: wheat;
+}
 #uslogo {
   font-weight: bolder;
   font-size: 3vh;
+}
+
+#RightNav {
+  display: flex;
+  flex-direction: column;
 }
 
 .navitem {

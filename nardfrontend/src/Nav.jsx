@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
+import RulesModal from "./Components/RulesModal";
 
 function Nav() {
   return (
@@ -15,11 +16,15 @@ function Nav() {
           <NavLink to="/leaderboard">Leaderboard Page</NavLink>
         </li>
       </ul>
-      <div style={{ display: "flex", justifyContent: "center" }}></div>
-      <div style={{ display: "flex", justifyContent: "right" }} id="uslogo">
-        <NavLink to="https://github.com/240401-NET/NardBackEnd/blob/main/README.md">
-          NARD INC.
-        </NavLink>
+      <div className="container" id="RightNav">
+        <div style={{ display: "flex", justifyContent: "right" }} id="uslogo">
+          <NavLink to="https://github.com/240401-NET/NardBackEnd/blob/main/README.md">
+            NARD INC.
+          </NavLink>
+          <div className="button" id="RButtdiv">
+            <RulesModal />
+          </div>
+        </div>
       </div>
     </nav>
   );

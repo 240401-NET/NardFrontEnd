@@ -6,10 +6,14 @@ import ViewLeaderboardButton from "./ViewLeaderboardButton";
 import SelectPokemonDropSearch from "./SelectPokemonDropSearch";
 import RandomizedOpponentButton from "./RandomizedOpponentButton";
 // import PlayersSpritesDisplay from "../PlayersSpritesDisplay";
+import BattleMessage from "../BattlePages/BattleMessage";
 
 function SelectionPage() {
   return (
     <>
+      <div>
+        <BattleMessage id="Battlebox" />
+      </div>
       <span className="selectionPage">
         <div className="Player">
           <div className="compdiv" id="SPDS">

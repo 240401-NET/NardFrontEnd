@@ -3,8 +3,8 @@ import DuringBattleMoveDrop from "../BattlePages/DuringBattleMoveDrop";
 import { PokemonContext } from "../Context/PokemonContext";
 
 function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
-  const { selectedMoves, setSelectedMoves } = useContext(PokemonContext);
-  const [open, setOpen] = useState(false);
+  const { selectedMoves, setSelectedMoves, open, setOpen } =
+    useContext(PokemonContext);
   const [confirmButtonText, setConfirmButtonText] =
     useState("Confirm Selection");
 
@@ -63,10 +63,10 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
         <ul className="flex">
           {selectedMoves.map((move, index) => (
             <li key={index}>
-              {move}{" "}
               <button id="RemoveButt" onClick={() => removeMove(move)}>
                 Remove
-              </button>
+              </button>{" "}
+              {move}
             </li>
           ))}
         </ul>
@@ -74,6 +74,10 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
       <button id="ConfirmMovesButton" onClick={handleConfirm}>
         {confirmButtonText}
       </button>
+      <DuringBattleMoveDrop>
+        selectedMoves={}
+        moveList={}
+      </DuringBattleMoveDrop>
     </div>
   );
 }

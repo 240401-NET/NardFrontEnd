@@ -13,31 +13,30 @@ function BattlePage() {
 
   return (
     <>
-      <BattleMessage />
-      <div className="battlePage">
-        {/* ($"{{ selectedPokemon }} Vs. {{ randomPokemon }}") */}
-        {/* <h1 id="VsBanner">CHARIZARD Vs. PIKACHU</h1> */}
-        <span>
-          {/* <div className="HPGauges">
+      {/* <BattleMessage />
+      <div className="battlePage" id="Battlebox"> */}
+      {/* ($"{{ selectedPokemon }} Vs. {{ randomPokemon }}") */}
+      {/* <h1 id="VsBanner">CHARIZARD Vs. PIKACHU</h1> */}
+      <span>
+        {/* <div className="HPGauges">
             <PlayerOneHpGauge />
             <PlayerTwoHpGauge />
           </div> */}
-        </span>
-        <span>
-          <div className="BPSprites flexaround">
-            <div className="PlayerOneSprite">
-              {selectedPokemon && (
-                <PlayerBattleSprite selectedPokemon={selectedPokemon} />
-              )}
-            </div>
-            <div className="PlayerTwoSprite">
-              <OpponentsSpritesDisplay />
-            </div>
+      </span>
+      <span>
+        <div className="BPSprites flexaround">
+          <div className="PlayerOneSprite">
+            {selectedPokemon && (
+              <PlayerBattleSprite selectedPokemon={selectedPokemon} />
+            )}
           </div>
-        </span>
-        <div className="flexaround">
-          <DuringBattleMoveDrop />
+          <div className="PlayerTwoSprite">
+            <OpponentsSpritesDisplay />
+          </div>
         </div>
+      </span>
+      <div className="flexaround">
+        <DuringBattleMoveDrop />
       </div>
     </>
   );

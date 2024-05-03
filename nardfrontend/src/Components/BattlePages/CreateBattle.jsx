@@ -10,4 +10,6 @@ async function createBattle(pokemonId1, pokemonId2, moves1, moves2) {
   console.log(data); // Output: Battle id {battleId}, Pokemon 1 stat block is {stats}, Pokemon 2 stat block is {stats}
 }
 
+return response;
+
 export default createBattle;

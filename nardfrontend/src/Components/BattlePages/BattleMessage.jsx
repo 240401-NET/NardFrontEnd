@@ -13,12 +13,13 @@ function BattleMessage({ messages }) {
         marginBottom: "20px",
       }}
     >
-      <h3>Battle Messages</h3>
-      <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-        {/* Display all messages */}
-        {messageList.map((msg, index) => (
-          <p key={index}>{msg}</p>
-        ))}
+      <div>
+        <h3>Battle Messages</h3>
+        <div style={{ maxHeight: "200px", overflowY: "auto" }}>
+          {messageList.map((message, index) => (
+            <div key={index}>{message}</div>
+          ))}
+        </div>
       </div>
     </div>
   );
