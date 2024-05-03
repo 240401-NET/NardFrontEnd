@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 function BattleList() {
   const [battleList, setBattleList] = useState([]);
@@ -11,7 +11,7 @@ function BattleList() {
       .then((json) => {
         console.log(json);
       })
-      .catch((execption) => {
+      .catch((exception) => {
         console.log(exception);
       });
   }, []);

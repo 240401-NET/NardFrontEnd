@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
 import RulesModal from "./Components/RulesModal";
+import <Nard className="png"></Nard> from "src/Assets/Nard.png";
 
 function Nav() {
   return (

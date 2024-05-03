@@ -88,11 +88,15 @@ code {
     monospace;
 }
 
-/* .dropdown {
+.dropdown-menu {
   position: relative;
-} */
 
-.menu {
+    max-height: 200px; /* Set the maximum height */
+    overflow-y: auto; /* Enable vertical scrollbar if content exceeds the maximum height */
+  
+}
+
+/* .menu {
   position: absolute;
 
   list-style-type: none;
@@ -101,7 +105,7 @@ code {
 
   border: 1px solid grey;
   width: 150px;
-}
+} */
 
 .menu > li {
   margin: 0;

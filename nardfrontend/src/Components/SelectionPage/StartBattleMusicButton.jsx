@@ -72,7 +72,7 @@ function StartBattleMusicButton() {
         </button>
       </Link>
       <p>Battle created {createdBattle}</p>
-      // Display any other relevant information about the created battle
+      {/*Display any other relevant information about the created battle*/}
     </div>
   );
 }

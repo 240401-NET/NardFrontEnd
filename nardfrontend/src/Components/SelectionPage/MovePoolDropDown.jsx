@@ -66,7 +66,7 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
               <button id="RemoveButt" onClick={() => removeMove(move)}>
                 Remove
               </button>{" "}
-              {move}
+              {move} 
             </li>
           ))}
         </ul>
