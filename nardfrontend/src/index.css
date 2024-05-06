@@ -91,9 +91,8 @@ code {
 .dropdown-menu {
   position: relative;
 
-    max-height: 200px; /* Set the maximum height */
-    overflow-y: auto; /* Enable vertical scrollbar if content exceeds the maximum height */
-  
+  max-height: 200px; /* Set the maximum height */
+  overflow-y: auto; /* Enable vertical scrollbar if content exceeds the maximum height */
 }
 
 /* .menu {
@@ -181,7 +180,7 @@ code {
 #ROButt {
   background-color: rgb(69, 68, 70, 0.85);
   border: 5px rgb(253, 251, 251) double;
-  color: white;
+  color: rgb(240, 234, 234);
   padding: 15px 12px;
   text-align: center;
   text-decoration: none;
@@ -194,6 +193,10 @@ code {
 #ROButt:hover {
   background-color: rgb(140, 138, 141);
   transform: scale(1.1);
+}
+
+#MovesSub {
+  color: black;
 }
 
 #VLButt {
@@ -212,6 +215,31 @@ code {
 #VLButt:hover {
   background-color: rgb(213, 220, 125);
   transform: scale(1.1);
+}
+
+#EAButt {
+  background-color: rgba(184, 62, 117, 0.85);
+  color: black;
+  padding: 15px 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  font-size: 42px;
+  width: 500px;
+  border-radius: 30px;
+  border: 5px rgb(249, 247, 247) double;
+}
+
+#EAButt:hover {
+  background-color: rgb(226, 158, 206);
+  transform: scale(1.1);
+}
+
+#EASpace {
+  display: flex;
+  justify-content: center;
 }
 
 #MovePoolDrop {
@@ -265,6 +293,18 @@ code {
 #OpMoveList {
   font-weight: bolder;
   font-size: 18px;
+}
+
+#PauseButton {
+  background-color: rgba(37, 4, 75, 0.85);
+  color: rgb(248, 237, 237);
+  padding: 15px 10px;
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 30px;
 }
 
 #Battlebox {
@@ -339,26 +379,82 @@ code {
   font-size: 4vh;
   font-family: Georgia, "Times New Roman", Times, serif;
   height: 35vh;
-  width: 100%;
+  width: 70%;
   opacity: 0.75;
   border: 18px rgb(78, 37, 102) double;
-  justify-content: space-around;
+  justify-content: space-around center;
 }
 
 /* .Player {
 
 } */
 
-.selectionPage {
+#homePage {
   display: flex;
   justify-content: space-around;
   margin-top: 5vh;
 }
 
 .battlePage {
-  /* display: flex; */
-  /* justify-content: space-around; */
+  display: flex;
+  justify-content: space-around;
   margin-top: 5vh;
+}
+
+#Welcome {
+  display: flex;
+  justify-content: center;
+  color: #01067c;
+  font-size: 10vh;
+  font-weight: bolder;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  box-shadow: #bab5ec;
+}
+
+#Welcome2 {
+  display: flex;
+  justify-content: center;
+  color: #4447a3;
+  font-size: 10vh;
+  font-weight: bolder;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  box-shadow: #bab5ec;
+}
+
+#Welcome3 {
+  display: flex;
+  justify-content: center;
+  color: #8b8ee1;
+  font-size: 10vh;
+  font-weight: bolder;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  box-shadow: #bab5ec;
+}
+#Welcome4 {
+  display: flex;
+  justify-content: center;
+  color: #696a90;
+  font-size: 10vh;
+  font-weight: bolder;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  box-shadow: #bab5ec;
+}
+
+#video-container {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 25000;
+}
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30000;
 }
 
 .flexcontent {

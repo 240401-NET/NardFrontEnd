@@ -70,7 +70,8 @@
 
 footer {
   display: block;
-  position: relative;
+  position: fixed;
+  width: 100%;
   height: 8vh;
   background-color: rgba(33, 94, 140, 0.65);
   color: white;

@@ -5,7 +5,7 @@ import Nav from "./Nav";
 import Leaderboard from "./Components/SelectionPage/Leaderboard";
 import Pokexamp4 from "./Assets/Pokexamp4.png";
 // import Pokexamp from "./Assets/Pokexamp.png";
-import SelectionPage from "./Components/SelectionPage/SelectionPage";
+import HomePage from "./Components/SelectionPage/HomePage";
 import Footer from "./Components/Footer";
 import Pokedome from "./Components/Pokedome";
 import AppProvider from "./Components/Context/AppProvider";
@@ -32,20 +32,21 @@ function App() {
             </div>
           </div>
         </header>
+
         <div className="background-container" style={{ zIndex: -2000 }}></div>
-        {/* <>
-        <SelectionPage />
-        <BattlePage />
-      </> */}
+
+        {/* <SelectionPage /> */}
+        {/* <BattlePage /> */}
 
         <div>
+          {" "}
+          {/* //add begin button home path, change selection path */}
           <Routes>
-            <Route path="/" element={<SelectionPage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/battle" element={<BattlePage />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
           </Routes>
         </div>
-
         <div>
           <Footer />
         </div>

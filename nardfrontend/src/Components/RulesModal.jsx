@@ -20,8 +20,9 @@ function RulesModal() {
             <span className="close" onClick={toggleModal}>
               &times;
             </span>
-            <h2>Modal Title</h2>
-            <p>This is the modal content.</p>
+            <h2>Instructions</h2>
+            Select a Pokemon the n select 4 moves
+            <p>Click the Begin Battle Music.</p>
           </div>
         </div>
       )}

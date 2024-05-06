@@ -1,5 +1,5 @@
 import { PokemonContext } from "../Context/PokemonContext";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 function StartBattleMusicButton() {
@@ -12,13 +12,23 @@ function StartBattleMusicButton() {
     setCreatedBattle,
   } = useContext(PokemonContext);
 
+  const audioRef = useRef(null); // Ref to store the audio element
+
   const playBattleMusic = () => {
     const audio = new Audio("http://localhost:5019/audio/BattleMusic-1.mp3");
     audio.play();
+    audioRef.current = audio;
+    // return audio;
+  };
+
+  const pauseBattleMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.pause(); // Pause the audio
+    }
   };
 
   const handleBeginBattle = () => {
-    console.log(selectedMoves ?? "dog");
+    console.log(selectedMoves);
     if (selectedMoves && randomMoves) {
       // Construct the URL for creating the battle
       const moves1string = selectedMoves.join(",");
@@ -41,7 +51,10 @@ function StartBattleMusicButton() {
           console.log(data); // Handle any further actions with the created battle data
         })
         .catch((error) => {
-          alert("Failed to create battle. Please try again later.", error);
+          console.log(
+            "Failed to create battle. Please try again later.",
+            error
+          );
         });
     } else {
       alert("Please select moves before starting the battle.");
@@ -54,24 +67,32 @@ function StartBattleMusicButton() {
 
   const startBattle = () => {
     // Start the battle music
-    // playBattleMusic();
+    playBattleMusic();
     handleBeginBattle();
     // Navigate to the BattlePage
   };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <Link to="/battle">
-        <button
-          id="BBButton"
-          type="button"
-          onClick={startBattle}
-          className="btn btn-primary"
-        >
-          BEGIN BATTLE
-        </button>
-      </Link>
-      <p>Battle created {createdBattle}</p>
+      {/* <Link to="/battle"> */}
+      <button
+        id="BBButton"
+        type="button"
+        onClick={startBattle}
+        className="btn btn-primary"
+      >
+        BEGIN BATTLE
+      </button>
+      <button
+        id="PauseButton"
+        type="button"
+        onClick={pauseBattleMusic}
+        className="btn btn-secondary ml-2"
+      >
+        PAUSE BATTLE
+      </button>
+      {/* </Link> */}
+      <p>{createdBattle}</p>
       {/*Display any other relevant information about the created battle*/}
     </div>
   );

@@ -55,21 +55,19 @@ function RandomizedOpponentButton() {
   return (
     <div
     // className="button flexaround"
-    // style={{ display: "flex", justifyContent: "right" }}
+
     // id="ROButt"
     >
-      <div>
-        <button
-          className="flexfull"
-          id="ROButt"
-          onClick={handleClick}
-          style={{ display: "flex", justifyContent: "right" }}
-        >
-          Find New Opponent
-        </button>
-      </div>
-      <br />
-      <br />
+      <button
+        className="nothing"
+        id="ROButt"
+        onClick={handleClick}
+        style={{ display: "flex", justifyContent: "right" }}
+        // style={{ display: "flex", justifyContent: "right" }}
+      >
+        Find New Opponent
+      </button>
+
       {/* <div>{error && <p>{error}</p>}</div> */}
       {randomPokemon && (
         <div>
@@ -85,13 +83,13 @@ function RandomizedOpponentButton() {
           <img
             src={randomPokemon.sprite}
             alt={randomPokemon.name}
-            style={{ width: "200px", height: "200px" }}
+            // style={{ width: "200px", height: "200px" }}
             // className="flexaround"
           />
           {randomMoves && randomMoves.length > 0 && (
             <div>
               <h3 id="MovesTitle">MOVES:</h3>
-              <ul>
+              <ul id="MovesSub">
                 {randomMoves &&
                   randomMoves.split(",").map((move, index) => (
                     <li id="OpMoveList" key={index}>

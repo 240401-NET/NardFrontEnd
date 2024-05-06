@@ -27,7 +27,7 @@ function Leaderboard() {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       {error ? (
-        <p>Error: {error}</p>
+        <p>Error: {error}</p> //HEY LISTEN!!!!!
       ) : (
         <table
           className="table table-striped text-light bg-danger bg-opacity-75"
