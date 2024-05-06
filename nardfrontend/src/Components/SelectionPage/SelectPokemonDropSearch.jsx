@@ -31,7 +31,7 @@ function SelectPokemonDropSearch() {
   // Function to handle selecting an opponent
   const handleSelectOpponent = (opponent) => {
     // Handle opponent selection logic here
-    console.log("Selected opponent:", opponent);
+    // console.log("Selected opponent:", opponent);
   };
 
   // Function to fetch Pokémon data and populate the dropdown
@@ -55,10 +55,10 @@ function SelectPokemonDropSearch() {
     }
   };
 
-  const fetchPokemonInfo = async (pokemonId, setData) => {
+  const fetchPokemonInfo = async (pokemonName, setData) => {
     // Fetch Pokémon data from the server using the getAllPokemon endpoint
     const response = await fetch(
-      `http://localhost:5019/Pokemon/getPokemon/${pokemonId}`
+      `http://localhost:5019/Pokemon/searchPokemon/${pokemonName}`
     )
       .then((response) => {
         if (!response.ok) {
@@ -83,11 +83,13 @@ function SelectPokemonDropSearch() {
       fetchPokemonInfo(selectedPokemon, setPokemonInfo);
     }
   }, [selectedPokemon]);
-  console.log(pokemonList.id);
   useEffect(() => {
     console.log("Pokemon list:", pokemonList); // Log the pokemonList state
   }, [pokemonList]);
-  console.log(PokemonInfo);
+  useEffect(() => {
+    console.log("Pokemon Info:", PokemonInfo); // Log the pokemonList state
+  }, [PokemonInfo]);
+
   useEffect(() => {
     console.log("Selected Pokemon:", selectedPokemon);
   }, [selectedPokemon]);
@@ -95,6 +97,7 @@ function SelectPokemonDropSearch() {
   useEffect(() => {
     console.log("Selected Moves:", selectedMoves);
   }, [selectedMoves]);
+  console.log(PokemonInfo);
 
   return (
     <div className="selection-page">
@@ -110,22 +113,22 @@ function SelectPokemonDropSearch() {
       </select>
       <div style={{ display: "flex", justifyContent: "center" }}>
         {selectedPokemon && (
-          <div>
+          <>
             <h2>Selected Pokemon Stats</h2>
             <ul>
-              <li>Name: {PokemonInfo.name}</li>
-              <li>HP: {PokemonInfo.hp}</li>
-              <li>Attack: {PokemonInfo.atk}</li>
-              {/* Add more stats as needed */}
+              <li>Name: {selectedPokemon.name}</li>
+              <li>HP: {selectedPokemon.hp}</li>
+              <li>Attack: {selectedMoves.atk}</li>
             </ul>
-          </div>
+          </>
         )}
+        ;
       </div>
       {/* Display selected Pokémon sprite */}
-      <PlayersSpritesDisplay
+      {/* <PlayersSpritesDisplay
         pokemonList={pokemonList}
         selectedPokemon={selectedPokemon}
-      />
+      /> */}
       {/* <StartBattleMusicButton selectedPokemonId={selectedPokemonId} /> */}
       <h1 id="PlayerTitle">{selectedPokemon.toUpperCase()}</h1>
       {/* Display selected Pokémon moves */}
@@ -136,7 +139,6 @@ function SelectPokemonDropSearch() {
           onSelectMoves={handleSelectMoves} // Pass onSelectMoves function as a prop
         />
       )}
-      console.log(selectedPokemon)
       {/* {selectedPokemon && (
         <PlayerBattleSprite
           selectedPokemon={selectedPokemon}

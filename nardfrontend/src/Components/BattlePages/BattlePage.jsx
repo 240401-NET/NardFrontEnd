@@ -12,37 +12,41 @@ import RandomizedOpponentButton from "../SelectionPage/RandomizedOpponentButton"
 
 function BattlePage() {
   //Window that displays messages during battle
-  const [selectedPokemon, setSelectedPokemon] = useState("");
+  // const [selectedPokemon, setSelectedPokemon] = useState("");
 
   return (
     <>
       <div className="battlePage" id="Battlebox">
         <BattleMessage />
       </div>
-      <span
-        style={{
-          display: "flex",
-          justifyContent: "flexaround",
-        }}
-      >
-        <div>
-          <SelectPokemonDropSearch />
-        </div>
-        <div>
-          <MovePoolDropDown />
-        </div>
-
-        <div
-          id="ROButt"
+      {/* <div id="video-container">
+        <video id="myVideo" autoPlay muted loop>
+          <source src="../../Assets/PokeVid.mp4" type="video/mp4" />
+        </video>
+      </div> */}
+      <div>
+        <span
           style={{
             display: "flex",
-            justifyContent: "right",
-            backgroundColor: "transparent",
+            justifyContent: "flexaround",
           }}
         >
-          <RandomizedOpponentButton />
-        </div>
-      </span>
+          <div>
+            <SelectPokemonDropSearch />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "right",
+            }}
+          >
+            <RandomizedOpponentButton />
+          </div>
+        </span>
+      </div>
+      <div>
+        <MovePoolDropDown />
+      </div>
     </>
   );
 }
