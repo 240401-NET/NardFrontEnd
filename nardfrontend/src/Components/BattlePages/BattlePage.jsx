@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import BattleMessage from "./BattleMessage";
 import DuringBattleMoveDrop from "./DuringBattleMoveDrop";

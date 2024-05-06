@@ -31,11 +31,10 @@ function StartBattleMusicButton() {
     console.log(selectedMoves);
     if (selectedMoves && randomMoves) {
       // Construct the URL for creating the battle
-      const moves1string = selectedMoves.join(",");
-      console.log(moves1string);
+      const moves1string = selectedMoves;
       const moves2string = randomMoves;
-      const url = `http://localhost:5019/Battle/createBattle/${selectedPokemon}/${randomPokemon}/${moves1string}/${moves2string}`;
-      console.log(url);
+      const url = `http://localhost:5019/Battle/createBattle/${selectedPokemon}/${randomPokemon.id}/${moves1string}/${moves2string}`;
+
 
       fetch(url, {
         method: "POST",
