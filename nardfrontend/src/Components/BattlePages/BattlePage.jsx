@@ -9,6 +9,7 @@ import OpponentsSpritesDisplay from "../OpponentsSpritesDisplay";
 import SelectPokemonDropSearch from "../SelectionPage/SelectPokemonDropSearch";
 import MovePoolDropDown from "../SelectionPage/MovePoolDropDown";
 import RandomizedOpponentButton from "../SelectionPage/RandomizedOpponentButton";
+import StartBattleMusicButton from "../SelectionPage/StartBattleMusicButton";
 
 function BattlePage() {
   //Window that displays messages during battle
@@ -45,8 +46,11 @@ function BattlePage() {
         </span>
       </div>
       <div>
-        <MovePoolDropDown />
+      <StartBattleMusicButton />
       </div>
+      {/* <div>
+        <MovePoolDropDown />
+      </div> */}
     </>
   );
 }

@@ -48,39 +48,39 @@ function SelectPokemonDropSearch() {
       // Set the fetched Pokémon data to the state
       setPokemonList(data);
     } catch (error) {
-      {
         pokemonListError && <p>{pokemonListError}</p>;
-      }
       console.log("Failed to fetch Pokémon data. Please try again later.");
     }
   };
 
-  const fetchPokemonInfo = async (pokemonName, setData) => {
-    // Fetch Pokémon data from the server using the getAllPokemon endpoint
+  const fetchPokemonInfo = async (pokemonName) => {
+    // Fetch Pokémon data from the server using the searchPokemon endpoint
+  try{
     const response = await fetch(
       `http://localhost:5019/Pokemon/searchPokemon/${pokemonName}`
-    )
-      .then((response) => {
+    );
+      
         if (!response.ok) {
           throw new Error("Failed to fetch Pokémon data");
         }
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => {
+        const data = await response.json();
+      
+        
+        setPokemonInfo(data);
+  }
+      catch(error) {
         console.error("Error fetching Pokemon data:", error);
-      });
+      }
   };
   // Fetch Pokémon data on component mount
   useEffect(() => {
     fetchPokemonList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (selectedPokemon) {
-      fetchPokemonInfo(selectedPokemon, setPokemonInfo);
+      fetchPokemonInfo(selectedPokemon);
     }
   }, [selectedPokemon]);
   useEffect(() => {
@@ -112,23 +112,25 @@ function SelectPokemonDropSearch() {
         ))}
       </select>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {selectedPokemon && (
-          <>
+      <>
+       {PokemonInfo ? 
+          <div>
             <h2>Selected Pokemon Stats</h2>
             <ul>
-              <li>Name: {selectedPokemon.name}</li>
-              <li>HP: {selectedPokemon.hp}</li>
-              <li>Attack: {selectedMoves.atk}</li>
-            </ul>
-          </>
-        )}
-        ;
+              <li>Name: {PokemonInfo.name}</li>
+              <li>HP: {PokemonInfo.hp}</li>
+              <li>Attack: {PokemonInfo.atk}</li>
+            </ul> </div> :
+            null
+     }
+
+        </>
       </div>
       {/* Display selected Pokémon sprite */}
-      {/* <PlayersSpritesDisplay
+      <PlayersSpritesDisplay
         pokemonList={pokemonList}
         selectedPokemon={selectedPokemon}
-      /> */}
+      />
       {/* <StartBattleMusicButton selectedPokemonId={selectedPokemonId} /> */}
       <h1 id="PlayerTitle">{selectedPokemon.toUpperCase()}</h1>
       {/* Display selected Pokémon moves */}
@@ -149,7 +151,7 @@ function SelectPokemonDropSearch() {
       {/* Display selected Pokémon details */}
       {selectedPokemon && (
         <div>
-          {PokemonInfo}
+          {/* {PokemonInfo} */}
           {/* You can display other details of the selected Pokémon here  */}
         </div>
       )}
