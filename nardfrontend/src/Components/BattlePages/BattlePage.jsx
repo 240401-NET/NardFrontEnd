@@ -1,15 +1,16 @@
 import React from "react";
 
-import BattleMessage from "./BattleMessage";
+import BattleMessage from "../Messages/BattleMessage";
 import DuringBattleMoveDrop from "./DuringBattleMoveDrop";
 import PlayerOneHpGauge from "./PlayerOneHpGauge";
 import PlayerTwoHpGauge from "./PlayerTwoHpGauge";
 import PlayerBattleSprite from "./PlayerBattleSprite";
 import OpponentsSpritesDisplay from "../OpponentsSpritesDisplay";
-import SelectPokemonDropSearch from "../SelectionPage/SelectPokemonDropSearch";
-import MovePoolDropDown from "../SelectionPage/MovePoolDropDown";
-import RandomizedOpponentButton from "../SelectionPage/RandomizedOpponentButton";
-import StartBattleMusicButton from "../SelectionPage/StartBattleMusicButton";
+import SelectPokemonDropSearch from "../HomePages/SelectPokemonDropSearch";
+import MovePoolDropDown from "../HomePages/MovePoolDropDown";
+import RandomizedOpponentButton from "../HomePages/RandomizedOpponentButton";
+import StartBattleMusicButton from "../HomePages/StartBattleMusicButton";
+import ClearDataButton from "./ClearDataButton";
 
 function BattlePage() {
   //Window that displays messages during battle
@@ -29,28 +30,24 @@ function BattlePage() {
         <span
           style={{
             display: "flex",
-            justifyContent: "flexaround",
+            justifyContent: "space-evenly",
           }}
         >
-          <div>
-            <SelectPokemonDropSearch />
-          </div>
-          <div
+          <SelectPokemonDropSearch
+            style={{
+              display: "flex",
+              justifyContent: "left",
+            }}
+          />
+
+          <RandomizedOpponentButton
             style={{
               display: "flex",
               justifyContent: "right",
             }}
-          >
-            <RandomizedOpponentButton />
-          </div>
+          />
         </span>
       </div>
-      <div>
-      <StartBattleMusicButton />
-      </div>
-      {/* <div>
-        <MovePoolDropDown />
-      </div> */}
     </>
   );
 }

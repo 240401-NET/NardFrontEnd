@@ -2,13 +2,14 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BattlePage from "./Components/BattlePages/BattlePage";
 import Nav from "./Nav";
-import Leaderboard from "./Components/SelectionPage/Leaderboard";
+import Leaderboard from "./Components/HomePages/Leaderboard";
 import Pokexamp4 from "./Assets/Pokexamp4.png";
 // import Pokexamp from "./Assets/Pokexamp.png";
-import HomePage from "./Components/SelectionPage/HomePage";
+import HomePage from "./Components/HomePages/HomePage";
 import Footer from "./Components/Footer";
 import Pokedome from "./Components/Pokedome";
 import AppProvider from "./Components/Context/AppProvider";
+import ClearDataButton from "./Components/BattlePages/ClearDataButton";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
               backgroundSize: "cover", // Set backgroundSize to cover
               backgroundRepeat: "no-repeat", // Prevent background from repeating
               backgroundPosition: "center", // Center the background image
-              opacity: ".85",
+              opacity: ".8",
             }}
           >
             <div id="Mtitle">
@@ -46,6 +47,9 @@ function App() {
             <Route path="/battle" element={<BattlePage />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
           </Routes>
+        </div>
+        <div>
+          <ClearDataButton />
         </div>
         <div>
           <Footer />

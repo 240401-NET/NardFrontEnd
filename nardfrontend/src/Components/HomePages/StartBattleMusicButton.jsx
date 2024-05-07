@@ -1,6 +1,6 @@
 import { PokemonContext } from "../Context/PokemonContext";
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import ClearDataButton from "../BattlePages/ClearDataButton";
 
 function StartBattleMusicButton() {
   const {
@@ -15,7 +15,14 @@ function StartBattleMusicButton() {
   const audioRef = useRef(null); // Ref to store the audio element
 
   const playBattleMusic = () => {
-    const audio = new Audio("http://localhost:5019/audio/BattleMusic-1.mp3");
+    const randomIndex = Math.floor(Math.random() * 2);
+
+    const musicFiles = [
+      "http://localhost:5019/audio/BattleMusic-1.mp3",
+      "http://localhost:5019/audio/ReadyFight-1.mp3",
+    ];
+
+    const audio = new Audio(musicFiles[randomIndex]);
     audio.play();
     audioRef.current = audio;
     // return audio;
@@ -29,12 +36,11 @@ function StartBattleMusicButton() {
 
   const handleBeginBattle = () => {
     console.log(selectedMoves);
-    if (selectedMoves && randomMoves) {
+    if (selectedMoves && randomMoves && randomPokemon) {
       // Construct the URL for creating the battle
       const moves1string = selectedMoves;
       const moves2string = randomMoves;
       const url = `http://localhost:5019/Battle/createBattle/${selectedPokemon}/${randomPokemon.id}/${moves1string}/${moves2string}`;
-
 
       fetch(url, {
         method: "POST",
@@ -48,6 +54,7 @@ function StartBattleMusicButton() {
         .then((data) => {
           setCreatedBattle(data); // Store the created battle data
           console.log(data); // Handle any further actions with the created battle data
+          playBattleMusic();
         })
         .catch((error) => {
           console.log(
@@ -56,7 +63,7 @@ function StartBattleMusicButton() {
           );
         });
     } else {
-      alert("Please select moves before starting the battle.");
+      alert("Please select opponent before starting the battle.");
     }
   };
 
@@ -66,32 +73,40 @@ function StartBattleMusicButton() {
 
   const startBattle = () => {
     // Start the battle music
-    playBattleMusic();
     handleBeginBattle();
-    // Navigate to the BattlePage
   };
+
+  // const startMessage = "${createdBattle}";
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       {/* <Link to="/battle"> */}
-      <button
-        id="BBButton"
-        type="button"
-        onClick={startBattle}
-        className="btn btn-primary"
-      >
-        BEGIN BATTLE
-      </button>
-      <button
-        id="PauseButton"
-        type="button"
-        onClick={pauseBattleMusic}
-        className="btn btn-secondary ml-2"
-      >
-        PAUSE BATTLE
-      </button>
+      <div>
+        <span style={{ display: "flex", justifyContent: "space-around" }}>
+          <button
+            id="BBButton"
+            type="button"
+            onClick={startBattle}
+            className="btn btn-primary"
+            style={{ overflow: "auto" }}
+          >
+            BEGIN BATTLE
+          </button>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button
+              id="PauseButton"
+              type="button"
+              onClick={pauseBattleMusic}
+              className="btn btn-secondary ml-2"
+            >
+              Pause Music
+            </button>
+          </div>
+        </span>
+      </div>
+
       {/* </Link> */}
-      <p>{createdBattle}</p>
+      {/* <p>{createdBattle}</p> */}
       {/*Display any other relevant information about the created battle*/}
     </div>
   );

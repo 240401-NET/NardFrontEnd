@@ -8,13 +8,11 @@ function BattleMessage({ messages }) {
     <div
       id="Battlebox"
       style={{
-        border: "1px solid #ccc",
-        padding: "10px",
         marginBottom: "20px",
       }}
     >
       <div>
-        <h3>Battle Messages</h3>
+        <h1>Battle Logs</h1>
         <div style={{ maxHeight: "200px", overflowY: "auto" }}>
           {messageList.map((message, index) => (
             <div key={index}>{message}</div>

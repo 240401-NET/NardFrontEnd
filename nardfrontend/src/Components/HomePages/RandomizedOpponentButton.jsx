@@ -83,11 +83,20 @@ function RandomizedOpponentButton() {
           <img
             src={randomPokemon.sprite}
             alt={randomPokemon.name}
+            style={{
+              transform: "scale(3.5)" /* Magnify the image by scaling it */,
+              transformOrigin: "0 0" /* Set the origin of the transformation */,
+              transition: "transform 0.3s ease" /* Add smooth transition */,
+            }}
             // style={{ width: "200px", height: "200px" }}
             // className="flexaround"
           />
           {randomMoves && randomMoves.length > 0 && (
-            <div>
+            <div
+              style={{
+                marginTop: "20vh",
+              }}
+            >
               <h3 id="MovesTitle">MOVES:</h3>
               <ul id="MovesSub">
                 {randomMoves &&

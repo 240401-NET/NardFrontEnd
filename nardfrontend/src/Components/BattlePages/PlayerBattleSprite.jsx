@@ -22,7 +22,7 @@ function PlayerBattleSprite({ pokemonList, selectedPokemon }) {
         <img
           src={spriteUrl}
           alt="Player One Pokemon Sprite"
-          style={{ width: "200px", height: "200px" }}
+          style={{ width: "300px", height: "300px" }}
         />
       ) : (
         <p>.</p>

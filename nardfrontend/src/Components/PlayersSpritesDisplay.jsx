@@ -4,8 +4,8 @@ function PlayersSpritesDisplay({ pokemonList, selectedPokemon }) {
   // Check if pokemonList is empty or undefined
   if (!pokemonList || pokemonList.length === 0) {
     return (
-      <div className="player-one-pokemon-sprite" id="P1S">
-        {/* <p>Error: Pokemon list is empty or undefined.</p> */}
+      <div>
+        <p>Error: Pokemon list is empty or undefined.</p>
       </div>
     );
   }
@@ -17,12 +17,16 @@ function PlayersSpritesDisplay({ pokemonList, selectedPokemon }) {
   // Get the sprite URL of the selected Pokémon
   const spriteUrl = selectedPokemonData ? selectedPokemonData.sprite : null;
   return (
-    <div className="player-one-pokemon-sprite" id="P1S">
+    <div className="image-container" id="P1S">
       {spriteUrl ? (
         <img
           src={spriteUrl}
           alt="Player One Pokemon Sprite"
-          style={{ width: "200px", height: "200px" }}
+          style={{
+            transform: "scale(3.5)" /* Magnify the image by scaling it */,
+            transformOrigin: "0 0" /* Set the origin of the transformation */,
+            transition: "transform 0.3s ease" /* Add smooth transition */,
+          }}
         />
       ) : (
         <p>.</p>

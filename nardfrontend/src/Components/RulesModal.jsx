@@ -21,8 +21,18 @@ function RulesModal() {
               &times;
             </span>
             <h2>Instructions</h2>
-            Select a Pokemon the n select 4 moves
-            <p>Click the Begin Battle Music.</p>
+            <ol>
+              <li>Enter the Arena</li>
+              <li>Select a Pokemon</li>
+              <li>Select 4 Moves</li>
+              <li>Confirm Your Selection</li>
+              <li>Click The Find New Opponent Button</li>
+              <li>Click the Begin Battle Button</li>
+              <li>Select a Move to Use</li>
+              <li>The Battle Log Describes the Round</li>
+              <li>Repeat Selecting moves until one Pokemon Retires</li>
+              <li>Celebrate Your Victory!</li>
+            </ol>
           </div>
         </div>
       )}

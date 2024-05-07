@@ -37,7 +37,7 @@
   background-image: url("./Assets/bgart.png");
   background-repeat: repeat;
   animation: scroll 2000s linear infinite;
-  opacity: 0.1;
+  opacity: 0.15;
   z-index: -20;
   margin-bottom: 200px;
 }
@@ -88,11 +88,15 @@ code {
     monospace;
 }
 
-.dropdown-menu {
-  position: relative;
+/* .dropdown-menu {
+  position: absolute;
 
-  max-height: 200px; /* Set the maximum height */
-  overflow-y: auto; /* Enable vertical scrollbar if content exceeds the maximum height */
+  max-height: 200px;
+  overflow-y: auto;
+} */
+
+.dropdown-menu li a:focus {
+  background-color: lightgray;
 }
 
 /* .menu {
@@ -116,7 +120,7 @@ code {
 .menu > li:hover {
   background-color: rgb(86, 13, 13);
   color: #e5e5f0;
-  transform: scale(1.2);
+  transform: scale(1.4);
 }
 
 .menu > li > button {
@@ -158,6 +162,21 @@ code {
   transform: scale(1.1);
 }
 
+#SPsearchbar {
+  background-color: rgba(0, 1, 8, 0.85);
+  border: none;
+  color: white;
+  padding: 15px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  margin-top: 10px;
+  border-radius: 30px;
+  border: 5px rgb(249, 247, 247) double;
+  margin: 7px;
+}
+
 #BBButton {
   background-color: rgb(38, 55, 181, 0.85);
   border: none;
@@ -165,10 +184,11 @@ code {
   padding: 15px 12px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 30px;
-  margin-top: 10px;
-  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  margin-top: 2px;
+  border-radius: 40px;
   border: 5px rgb(249, 247, 247) double;
 }
 
@@ -203,17 +223,41 @@ code {
   background-color: rgb(176, 184, 62, 0.85);
   color: black;
   padding: 15px 10px;
-  margin-bottom: 60%;
+  margin-bottom: 15px;
+  margin-top: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
   border-radius: 30px;
   border: 5px rgb(249, 247, 247) double;
+  font-weight: bolder;
 }
 
 #VLButt:hover {
   background-color: rgb(213, 220, 125);
+  transform: scale(1.1);
+}
+
+#CDButt {
+  background-color: rgba(33, 111, 145, 0.85);
+  color: black;
+  padding: 15px 10px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  width: 200px;
+  border-radius: 30px;
+  border: 5px rgb(249, 247, 247) double;
+  font-weight: bolder;
+  opacity: 0.7;
+}
+
+#CDButt:hover {
+  background-color: rgb(161, 197, 220);
   transform: scale(1.1);
 }
 
@@ -298,13 +342,19 @@ code {
 #PauseButton {
   background-color: rgba(37, 4, 75, 0.85);
   color: rgb(248, 237, 237);
-  padding: 15px 10px;
-
+  font-weight: bold;
+  padding: 10px 10px;
+  max-height: 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
   border-radius: 30px;
+}
+
+#PauseButton:hover {
+  background-color: rgba(73, 45, 105, 0.85);
+  transform: scale(1.2);
 }
 
 #Battlebox {
@@ -329,6 +379,13 @@ code {
   text-align: left;
 }
 
+.image-container {
+  width: 300px;
+  height: 300px;
+  /* height: 100px; Set the width of the container */
+  overflow: hidden; /* Hide overflow */
+}
+
 #P2S {
   justify-content: right;
   text-align: right;
@@ -344,21 +401,21 @@ code {
   color: #01067c;
 }
 
-.PlayerOneSprite {
+/* .PlayerOneSprite {
   border: black 10px solid;
   height: 25vh;
   width: 30%;
-}
-
+} */
+/* 
 .PlayerTwoSprite {
   border: black 10px solid;
   height: 25vh;
   width: 30%;
-}
-
+} */
+/* 
 .BPSprites {
   margin-top: 3vh;
-}
+} */
 
 #DBMD {
   margin-top: 3vh;
@@ -408,6 +465,7 @@ code {
   font-weight: bolder;
   font-family: Georgia, "Times New Roman", Times, serif;
   box-shadow: #bab5ec;
+  text-shadow: 3px 3px 3px #1a1e1f;
 }
 
 #Welcome2 {
@@ -418,6 +476,7 @@ code {
   font-weight: bolder;
   font-family: Georgia, "Times New Roman", Times, serif;
   box-shadow: #bab5ec;
+  text-shadow: 3px 3px 3px #1a1e1f;
 }
 
 #Welcome3 {
@@ -428,6 +487,7 @@ code {
   font-weight: bolder;
   font-family: Georgia, "Times New Roman", Times, serif;
   box-shadow: #bab5ec;
+  text-shadow: 3px 3px 3px #1a1e1f;
 }
 #Welcome4 {
   display: flex;
@@ -436,7 +496,7 @@ code {
   font-size: 10vh;
   font-weight: bolder;
   font-family: Georgia, "Times New Roman", Times, serif;
-  box-shadow: #bab5ec;
+  text-shadow: 4px 4px 4px #1a1e1f;
 }
 
 #video-container {
@@ -482,12 +542,12 @@ video {
   justify-content: space-between;
 }
 
-.dropdown {
+/* .dropdown {
   position: relative;
-}
+} */
 
-.dropdown-menu {
-  position: absolute;
+/* .dropdown-menu {
+  position: relative;
   top: calc(100% + 5px);
   left: 0;
   background-color: #fff;
@@ -495,7 +555,7 @@ video {
   padding: 5px;
   margin: 0;
   list-style: none;
-}
+} */
 
 .dropdown-menu li {
   padding: 5px;
@@ -524,13 +584,13 @@ video {
 .modal {
   display: flex;
   justify-content: center;
-  align-items: center;
+  opacity: 1;
   position: relative;
   top: 0;
   left: 0;
   color: #01067c;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
@@ -538,9 +598,14 @@ video {
 .modal-content {
   background-color: white;
   padding: 20px;
+  margin: 50px;
+  opacity: 1;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: #01067c;
+  font-weight: bolder;
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Close button */
