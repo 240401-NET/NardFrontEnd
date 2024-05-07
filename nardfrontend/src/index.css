@@ -500,20 +500,19 @@ code {
 }
 
 #video-container {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 25000;
-}
-
-video {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 30000;
+  z-index: 40000; /* Ensure the video appears on top of other elements */
+  pointer-events: none; /* Allow interaction with elements underneath */
+}
+
+#myVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .flexcontent {

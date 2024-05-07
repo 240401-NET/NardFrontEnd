@@ -12,6 +12,14 @@ function StartBattleMusicButton() {
     setCreatedBattle,
   } = useContext(PokemonContext);
 
+  const videoRef = useRef(null); // Ref to store the video element
+
+  const playVideo = () => {
+    setTimeout(() => {
+      videoRef.current.play();
+    }, 1000); // Delay play() method call by 1 second (adjust as needed)
+  };
+
   const audioRef = useRef(null); // Ref to store the audio element
 
   const playBattleMusic = () => {
@@ -55,6 +63,7 @@ function StartBattleMusicButton() {
           setCreatedBattle(data); // Store the created battle data
           console.log(data); // Handle any further actions with the created battle data
           playBattleMusic();
+          playVideo(); // Start playing the video
         })
         .catch((error) => {
           console.log(
@@ -103,6 +112,18 @@ function StartBattleMusicButton() {
             </button>
           </div>
         </span>
+      </div>
+      <div id="video-container">
+        <video
+          ref={videoRef}
+          id="myVideo"
+          autoPlay
+          muted
+          loop
+          style={{ display: "none" }} // Hide the video element initially
+        >
+          <source src="../../Assets/PokeVid.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* </Link> */}

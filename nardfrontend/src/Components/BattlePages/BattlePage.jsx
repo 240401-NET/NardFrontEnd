@@ -21,11 +21,6 @@ function BattlePage() {
       <div className="battlePage" id="Battlebox">
         <BattleMessage />
       </div>
-      {/* <div id="video-container">
-        <video id="myVideo" autoPlay muted loop>
-          <source src="../../Assets/PokeVid.mp4" type="video/mp4" />
-        </video>
-      </div> */}
       <div>
         <span
           style={{
