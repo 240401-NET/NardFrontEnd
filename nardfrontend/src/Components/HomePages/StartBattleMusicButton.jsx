@@ -1,6 +1,7 @@
 import { PokemonContext } from "../Context/PokemonContext";
 import React, { useState, useContext, useEffect, useRef } from "react";
 import ClearDataButton from "../BattlePages/ClearDataButton";
+import PokeVid from "../../Assets/PokeVid.mp4";
 
 function StartBattleMusicButton() {
   const {
@@ -31,6 +32,7 @@ function StartBattleMusicButton() {
     ];
 
     const audio = new Audio(musicFiles[randomIndex]);
+    audio.loop = true;
     audio.play();
     audioRef.current = audio;
     // return audio;
@@ -40,6 +42,11 @@ function StartBattleMusicButton() {
     if (audioRef.current) {
       audioRef.current.pause(); // Pause the audio
     }
+  };
+
+  const handleVideoEnd = () => {
+    // Hide the video when it ends
+    videoRef.current.style.display = "none";
   };
 
   const handleBeginBattle = () => {
@@ -63,7 +70,6 @@ function StartBattleMusicButton() {
           setCreatedBattle(data); // Store the created battle data
           console.log(data); // Handle any further actions with the created battle data
           playBattleMusic();
-          playVideo(); // Start playing the video
         })
         .catch((error) => {
           console.log(
@@ -81,7 +87,7 @@ function StartBattleMusicButton() {
   }, [createdBattle]);
 
   const startBattle = () => {
-    // Start the battle music
+    playVideo();
     handleBeginBattle();
   };
 
@@ -119,10 +125,10 @@ function StartBattleMusicButton() {
           id="myVideo"
           autoPlay
           muted
-          loop
-          style={{ display: "none" }} // Hide the video element initially
+          onEnded={handleVideoEnd}
+          // style={{ display: "none" }}
         >
-          <source src="../../Assets/PokeVid.mp4" type="video/mp4" />
+          <source src={PokeVid} type="video/mp4" />
         </video>
       </div>
 
