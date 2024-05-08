@@ -71,6 +71,7 @@
 footer {
   display: flex;
   position: fixed;
+  bottom: 0;
   width: 100%;
   height: 8vh;
   background-color: rgba(33, 94, 140, 0.65);
@@ -79,6 +80,7 @@ footer {
   font-size: 18px;
   justify-content: end;
   /* margin-top: 3vh; */
+  z-index: -1;
 }
 
 #footertext {

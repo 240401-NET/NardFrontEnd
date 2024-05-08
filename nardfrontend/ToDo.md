@@ -33,4 +33,42 @@ Begin Battle Button. should fetch to createBattle endpoint and from that info th
 
 Modal triggered to open with the end of the battle, that also updates Leaderboard results, and clears the previous battle with a hard refresh
 
-remove buttons need to go after confirmation
+remove buttons need to go after confirmation \*
+
+1. display messages -
+2. fix footer \*
+3. results modal that resets data and updates leaderboard. -
+4. show messages and buttons over video -
+5. clean & refactor code -
+6. Final Music
+
+import React, { useState, useEffect } from "react";
+
+function TypingText() {
+const [displayText, setDisplayText] = useState(""); // State to manage the displayed text
+const textToType = "Hello, world!"; // Text to be displayed
+
+useEffect(() => {
+let currentIndex = 0;
+const typingInterval = setInterval(() => {
+if (currentIndex <= textToType.length) {
+setDisplayText(textToType.slice(0, currentIndex));
+currentIndex++;
+} else {
+clearInterval(typingInterval);
+}
+}, 100); // Typing speed: 100 milliseconds per character
+
+    return () => clearInterval(typingInterval); // Cleanup function
+
+}, []); // Empty dependency array to run only once on component mount
+
+return (
+
+<div>
+<p>{displayText}</p>
+</div>
+);
+}
+
+export default TypingText;
