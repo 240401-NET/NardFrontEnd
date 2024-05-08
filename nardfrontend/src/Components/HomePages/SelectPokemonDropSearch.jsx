@@ -130,9 +130,8 @@ function SelectPokemonDropSearch() {
         <>
           {PokemonInfo ? (
             <div>
-              <h2>Stats</h2>
-              <ul>
-                <li>Name: {PokemonInfo.name}</li>
+              <h2 style={{ marginTop: "13vh" }}>Stats</h2>
+              <ul style={{ fontWeight: "bolder", fontSize: "20px" }}>
                 <li>HP: {PokemonInfo.hp}</li>
                 <li>Attack: {PokemonInfo.atk}</li>
                 <li>Defense: {PokemonInfo.def}</li>
@@ -141,24 +140,29 @@ function SelectPokemonDropSearch() {
             </div>
           ) : null}
         </>
-
-        {/* Display selected Pokémon sprite */}
-        <PlayersSpritesDisplay
-          pokemonList={pokemonList}
-          selectedPokemon={selectedPokemon}
-        />
-
+        <div>
+          <h1 style={{ marginLeft: "95px", fontSize: "65px" }} id="PlayerTitle">
+            {selectedPokemon.toUpperCase()}
+          </h1>
+          {/* Display selected Pokémon sprite */}
+          <PlayersSpritesDisplay
+            pokemonList={pokemonList}
+            selectedPokemon={selectedPokemon}
+          />
+        </div>
         {/* </span> */}
       </div>
 
       {/* <StartBattleMusicButton selectedPokemonId={selectedPokemonId} /> */}
-      <h1 id="PlayerTitle">{selectedPokemon.toUpperCase()}</h1>
+
       {/* Display selected Pokémon moves */}
       {selectedPokemon && (
         <MovePoolDropDown
           selectedPokemon={selectedPokemon}
           pokemonList={pokemonList}
-          onSelectMoves={handleSelectMoves} // Pass onSelectMoves function as a prop
+          onSelectMoves={handleSelectMoves}
+          // battleId={battleId}
+          // Pass onSelectMoves function as a prop
         />
       )}
 

@@ -4,15 +4,15 @@
   background: linear-gradient(
     -225deg,
     #060937 0,
-    #a2a5e6 29%,
-    #cfcde7 67%,
-    #07072d 100%
+    #6266c3 29%,
+    #e2eafb 67%,
+    #accfef 100%
   );
-  height: 120px;
+  height: 110px;
   width: 100%;
   text-decoration: none;
   color: whitesmoke;
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 #RButtdiv {
@@ -23,12 +23,18 @@
   justify-content: flex-end;
   align-items: end;
   font-weight: bolder;
-  font-size: 4vh;
+  font-size: 3vh;
   background-color: #4197ed;
-  color: rgb(18, 6, 231);
+  color: rgb(248, 248, 252);
   border-radius: 30px;
-  border: 14px black double;
+  border: 14px rgb(187, 205, 248) double;
   margin: 25px;
+  text-shadow: 5px 5px 5px#4447a3;
+}
+
+#RButt:hover {
+  background-color: rgb(161, 197, 220);
+  transform: scale(1.1);
 }
 /* #uslogo {
   font-weight: bolder;
@@ -41,7 +47,7 @@
 #logous {
   /* font-weight: bolder; */
   font-size: 20vh;
-  height: 13vh;
+  height: 11vh;
   /* size: 20px; */
   opacity: 0.65;
 }

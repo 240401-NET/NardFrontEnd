@@ -165,7 +165,7 @@ code {
 #SPsearchbar {
   background-color: rgba(0, 1, 8, 0.85);
   border: none;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 15px 12px;
   text-align: center;
   text-decoration: none;
@@ -240,20 +240,16 @@ code {
 }
 
 #CDButt {
-  background-color: rgba(33, 111, 145, 0.85);
-  color: black;
-  padding: 15px 10px;
-  margin-bottom: 15px;
-  margin-top: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  width: 200px;
-  border-radius: 30px;
-  border: 5px rgb(249, 247, 247) double;
+  justify-content: flex-end;
+  align-items: end;
   font-weight: bolder;
-  opacity: 0.7;
+  font-size: 3vh;
+  background-color: #4197ed;
+  color: rgb(248, 248, 252);
+  border-radius: 30px;
+  border: 14px rgb(187, 205, 248) double;
+  margin: 25px;
+  text-shadow: 5px 5px 5px#4447a3;
 }
 
 #CDButt:hover {
@@ -290,8 +286,11 @@ code {
   font-size: 20px;
   background-color: #01067c;
   opacity: 0.75;
-  color: #bab5ec;
+  color: #e1e0eb;
   border-radius: 25px;
+  height: 8vh;
+  font-weight: bolder;
+  text-shadow: 5px 5px 5px#030018;
 }
 
 #MovePoolDrop:hover {
@@ -300,11 +299,13 @@ code {
 }
 
 #RemoveButt {
-  font-size: 10px;
+  font-size: 13px;
   background-color: #373972;
   opacity: 0.75;
-  color: #bab5ec;
+  color: #e5e4ee;
   border-radius: 25px;
+  text-shadow: 4px 4px 4px rgb(13, 3, 27);
+  font-weight: bolder;
 }
 
 #ConfirmMovesButton {
@@ -331,7 +332,7 @@ code {
 #MovesTitle {
   padding-top: 0;
   font-size: 30px;
-  color: blue;
+  color: rgb(238, 81, 14);
 }
 
 #OpMoveList {
@@ -361,6 +362,8 @@ code {
   background-color: beige;
   text-align: center;
   color: grey;
+  min-height: 12vh;
+  opacity: 0.9;
 }
 
 /* #P1HP {
@@ -452,7 +455,19 @@ code {
   margin-top: 5vh;
 }
 
+#moves-container {
+  background-color: #0d14f2;
+  border-radius: 30px;
+  font-size: larger;
+  text-shadow: 4px 4px 4px rgb(12, 2, 25);
+  color: #f0f0fc;
+  font-weight: bolder;
+  height: 35px;
+  margin: 2px;
+}
+
 .battlePage {
+  /* position: fixed; */
   display: flex;
   justify-content: space-around;
 }
@@ -615,4 +630,8 @@ code {
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+.flipped-horizontal {
+  transform: scaleX(-1);
 }

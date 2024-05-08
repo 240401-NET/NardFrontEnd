@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./Nav.css";
 import RulesModal from "./Components/RulesModal";
 import logoNard from "./Assets/logoNard.png";
+import ClearDataButton from "./Components/BattlePages/ClearDataButton";
 
 function Nav() {
   return (
@@ -22,6 +23,12 @@ function Nav() {
         </li>
       </ul>
       <div>
+        <ClearDataButton />
+      </div>
+      <div className="button" id="RButtdiv">
+        <RulesModal />
+      </div>
+      <div>
         {/* <div className="container" id="RightNav"> */}
         {/* <div style={{ display: "flex", justifyContent: "right" }} id="uslogo"> */}
         {/* <NavLink to="https://github.com/240401-NET/NardBackEnd/blob/main/README.md"> */}
@@ -29,9 +36,7 @@ function Nav() {
       </div>
 
       {/* </div> */}
-      <div className="button" id="RButtdiv">
-        <RulesModal />
-      </div>
+
       {/* </div> */}
     </nav>
   );

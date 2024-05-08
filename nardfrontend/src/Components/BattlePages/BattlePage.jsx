@@ -1,6 +1,6 @@
 import React from "react";
 
-import BattleMessage from "../Messages/BattleMessage";
+import BattleMessage from "./BattleMessage";
 import DuringBattleMoveDrop from "./DuringBattleMoveDrop";
 import PlayerOneHpGauge from "./PlayerOneHpGauge";
 import PlayerTwoHpGauge from "./PlayerTwoHpGauge";

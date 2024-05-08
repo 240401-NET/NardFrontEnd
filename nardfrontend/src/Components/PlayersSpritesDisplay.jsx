@@ -17,11 +17,12 @@ function PlayersSpritesDisplay({ pokemonList, selectedPokemon }) {
   // Get the sprite URL of the selected Pokémon
   const spriteUrl = selectedPokemonData ? selectedPokemonData.sprite : null;
   return (
-    <div className="image-container" id="P1S">
+    <div className="image-container, flipped-horizontal" id="P1S">
       {spriteUrl ? (
         <img
           src={spriteUrl}
           alt="Player One Pokemon Sprite"
+          className="flipped-horizontal"
           style={{
             transform: "scale(3.5)" /* Magnify the image by scaling it */,
             transformOrigin: "0 0" /* Set the origin of the transformation */,

@@ -9,7 +9,6 @@ import HomePage from "./Components/HomePages/HomePage";
 import Footer from "./Components/Footer";
 import Pokedome from "./Components/Pokedome";
 import AppProvider from "./Components/Context/AppProvider";
-import ClearDataButton from "./Components/BattlePages/ClearDataButton";
 
 function App() {
   return (
@@ -48,9 +47,7 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard />} />
           </Routes>
         </div>
-        <div>
-          <ClearDataButton />
-        </div>
+
         <div>
           <Footer />
         </div>

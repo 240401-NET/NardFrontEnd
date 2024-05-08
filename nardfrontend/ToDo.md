@@ -32,3 +32,5 @@ else {(but did not connect. {fasterPokemon}) stays at {P1HP}}
 Begin Battle Button. should fetch to createBattle endpoint and from that info the pokemons names, HP, and will be displayed.
 
 Modal triggered to open with the end of the battle, that also updates Leaderboard results, and clears the previous battle with a hard refresh
+
+remove buttons need to go after confirmation

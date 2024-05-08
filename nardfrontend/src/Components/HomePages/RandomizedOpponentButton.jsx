@@ -76,6 +76,8 @@ function RandomizedOpponentButton() {
               fontSize: "40px",
               color: "brown",
               fontWeight: "bolder",
+              marginTop: "50px",
+              fontSize: "65px",
             }}
           >
             {randomPokemon.name.toUpperCase()}
@@ -98,14 +100,14 @@ function RandomizedOpponentButton() {
               }}
             >
               <h3 id="MovesTitle">MOVES:</h3>
-              <ul id="MovesSub">
+              <ol id="MovesSub">
                 {randomMoves &&
                   randomMoves.split(",").map((move, index) => (
                     <li id="OpMoveList" key={index}>
                       {move}
                     </li>
                   ))}
-              </ul>
+              </ol>
             </div>
           )}
         </div>

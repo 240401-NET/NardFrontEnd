@@ -1,34 +1,48 @@
 import React, { useState, useEffect, useContext } from "react";
 import { PokemonContext } from "../Context/PokemonContext";
+import { BattleContext } from "../Context/BattleContext";
 import StartBattleMusicButton from "./StartBattleMusicButton";
 
-function MovePoolDropDown({
-  selectedPokemon,
-  pokemonList,
-  onSelectMoves,
-  randomMoves,
-}) {
-  const { selectedMoves, setSelectedMoves, open, setOpen } =
+function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
+  const { selectedMoves, setSelectedMoves, open, setOpen, randomMoves } =
     useContext(PokemonContext);
+  const { battleInfo, updatedBattleData, setUpdatedBattleData } =
+    useContext(BattleContext);
   const [confirmButtonText, setConfirmButtonText] =
     useState("Confirm Selection");
   const [confirmed, setConfirmed] = useState(false);
 
-  // Reset selected moves when a new Pokemon is chosen
   useEffect(() => {
     setSelectedMoves([]);
     setConfirmed(false);
   }, [selectedPokemon]);
 
-  const handleMoveSelect = (move) => {
+  const handleMoveSelect = async (move) => {
     if (!selectedMoves.includes(move)) {
       if (selectedMoves.length < 4) {
         setSelectedMoves([...selectedMoves, move]);
       } else {
         alert("You can select only 4 moves.");
       }
+    } else if (confirmed) {
+      alert("Moves can not be changed after confirmation.");
     } else {
       alert("Move already selected.");
+    }
+  };
+
+  const randomOpponentMove = () => {
+    // Check if randomMoves array has at least one move
+    console.log(randomMoves ?? "dog");
+    const splittedRandomMoves = randomMoves.split(",");
+    if (splittedRandomMoves.length > 0) {
+      // Get a random index within the range of randomMoves array
+      let randomIndex = Math.floor(Math.random() * splittedRandomMoves.length);
+      // Return the move at the randomly selected index
+      return splittedRandomMoves[randomIndex];
+    } else {
+      // If randomMoves array is empty, return null or handle the scenario as needed
+      return null; // or handle the scenario appropriately
     }
   };
 
@@ -53,8 +67,21 @@ function MovePoolDropDown({
     }
   };
 
-  const handleBeginBattle = () => {
-    // Handle logic for beginning the battle
+  const handleBeginBattle = () => {};
+
+  const updateBattle = async (battleId, pokemon1Move, pokemon2Move) => {
+    const url = `http://localhost:5019/Battle/updateBattle/${battleId}/${pokemon1Move}/${pokemon2Move}`;
+
+    try {
+      const response = await fetch(url, {
+        method: "PUT",
+      });
+
+      const data = await response.json();
+      setUpdatedBattleData(data);
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    }
   };
 
   return (
@@ -85,23 +112,44 @@ function MovePoolDropDown({
               // this can be cleaned up
               .map((move, index) => (
                 <li className="menu-item" key={index}>
-                  <button onClick={() => handleMoveSelect(move)}>{move}</button>
+                  <button
+                    onClick={() => handleMoveSelect(move)}
+                    disabled={confirmed}
+                  >
+                    {move}
+                  </button>
                 </li>
               ))}
           </ul>
         )}
         <div>
-          <h4>Selected Moves:</h4>
-          <ul className="flex">
+          <h2>Selected Moves:</h2>
+          <ol className="flex">
             {selectedMoves.map((move, index) => (
               <li key={index}>
-                <button id="RemoveButt" onClick={() => removeMove(move)}>
+                <button
+                  id="RemoveButt"
+                  onClick={() => removeMove(move)}
+                  disabled={confirmed}
+                >
                   Remove
                 </button>{" "}
-                <button id="moves-container">{move}</button>
+                <button
+                  id="moves-container"
+                  onClick={() =>
+                    updateBattle(
+                      battleInfo.battleId,
+                      selectedMoves[index],
+                      randomOpponentMove()
+                    )
+                  }
+                >
+                  {" "}
+                  {move}
+                </button>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
         <div>
           {!confirmed && (

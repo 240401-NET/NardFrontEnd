@@ -1,4 +1,5 @@
 import { PokemonContext } from "../Context/PokemonContext";
+import { BattleContext } from "../Context/BattleContext";
 import React, { useState, useContext, useEffect, useRef } from "react";
 import ClearDataButton from "../BattlePages/ClearDataButton";
 import PokeVid from "../../Assets/PokeVid.mp4";
@@ -12,6 +13,8 @@ function StartBattleMusicButton() {
     createdBattle,
     setCreatedBattle,
   } = useContext(PokemonContext);
+
+  const { battleInfo, setBattleInfo } = useContext(BattleContext);
 
   const videoRef = useRef(null); // Ref to store the video element
 
@@ -69,6 +72,14 @@ function StartBattleMusicButton() {
         .then((data) => {
           setCreatedBattle(data); // Store the created battle data
           console.log(data); // Handle any further actions with the created battle data
+          console.log("FANCY", JSON.parse(data));
+
+          setBattleInfo(JSON.parse(data));
+          // console.log(battleInfo.battleId);
+          // const randomIndex = Math.floor(
+          //   Math.random() * battleInfo.p1Moves.Length
+          // );
+          // console.log(battleInfo.p1Moves[randomIndex]);
           playBattleMusic();
         })
         .catch((error) => {
