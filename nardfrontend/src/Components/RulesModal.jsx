@@ -10,7 +10,7 @@ function RulesModal() {
   return (
     <div>
       <button onClick={toggleModal} id="RButt">
-      Not Winner
+      Rules
       </button>
 
       {isOpen && (
