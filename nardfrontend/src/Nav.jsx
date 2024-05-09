@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
 import RulesModal from "./Components/RulesModal";
-import logoNard from "./Assets/logoNard.png";
+import logoNard from "./Assets/logoNard.jpg";
 import ClearDataButton from "./Components/BattlePages/ClearDataButton";
 
 function Nav() {
