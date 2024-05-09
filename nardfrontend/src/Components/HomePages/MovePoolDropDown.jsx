@@ -2,18 +2,17 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { PokemonContext } from "../Context/PokemonContext";
 import { BattleContext } from "../Context/BattleContext";
 import StartBattleMusicButton from "./StartBattleMusicButton";
-// import PokemonVid from "../../Assets/PokemonVid.mp4";
 
 function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
-  const { selectedMoves, setSelectedMoves, open, setOpen, randomMoves } =
+  const { selectedMoves, setSelectedMoves, open, setOpen, randomMoves,randomPokemon, pokemonInfo, setPokemonInfo, setRandomPokemon } =
     useContext(PokemonContext);
-  const { battleInfo, updatedBattleData, setUpdatedBattleData } =
+  const { battleInfo, setBattleInfo, updatedBattleData, setUpdatedBattleData, setWinnerFlag } =
     useContext(BattleContext);
   const [confirmButtonText, setConfirmButtonText] =
     useState("Confirm Selection");
   const [confirmed, setConfirmed] = useState(false);
 
-  // const videoRef2 = useRef(null);
+
 
   useEffect(() => {
     setSelectedMoves([]);
@@ -35,17 +34,14 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
   };
 
   const randomOpponentMove = () => {
-    // Check if randomMoves array has at least one move
     console.log(randomMoves ?? "dog");
     const splittedRandomMoves = randomMoves.split(",");
     if (splittedRandomMoves.length > 0) {
-      // Get a random index within the range of randomMoves array
       let randomIndex = Math.floor(Math.random() * splittedRandomMoves.length);
-      // Return the move at the randomly selected index
       return splittedRandomMoves[randomIndex];
     } else {
-      // If randomMoves array is empty, return null or handle the scenario as needed
-      return null; // or handle the scenario appropriately
+      
+      return null;
     }
   };
 
@@ -80,31 +76,60 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
 
       const data = await response.json();
       setUpdatedBattleData(data);
+      getBattleById(battleId);
       console.log(battleInfo);
     } catch (error) {
       alert(`Error: ${error.message}`);
     }
   };
 
-  const updateLeaderboardEntryOnBattleEnd = async (
-    battleId,
-    pokemonId,
-    winLossPoint
-  ) => {
-    const url = `http://localhost:5019/Leaderboard/${pokemonId}/entry`;
-
+  // Method to get battle by battle id from the backend and use it to update battleInfo
+  const getBattleById = async (battleId) => {
+    const url = `http://localhost:5019/Battle/getBattle/${battleId}`;
+  
     try {
-      const response = await fetch(url, {
-        method: "PUT",
-        body: JSON.stringify({ winLossPoint }),
-        headers: { "Content-Type": "application/json" },
-      });
-
-      const data = await response.json();
-
+      const response = await fetch(url);
+      var data = await response.text();
+      data = JSON.parse(data);
       console.log(data);
+      
+      // Extract p1StatBlock and p2StatBlock from data
+      const p1StatBlock = data.p1StatBlock;
+      const p2StatBlock = data.p2StatBlock;
+      console.log(data.p1StatBlock);
+      if (pokemonInfo && randomPokemon) {
+        let tempSelectedPokemon = { ...pokemonInfo };
+        let tempRandomPokemon = { ...randomPokemon };
+        
+  
+        // replace the tempSelectedPokemon and tempRandomPokemon stats with the p1StatBlock and p2StatBlock respectively
+        tempSelectedPokemon.hp = p1StatBlock[0];
+        tempRandomPokemon.hp = p2StatBlock[0];
+        var splitTempHp = tempSelectedPokemon.hp.split(":");
+        var splitTempHp2 = tempRandomPokemon.hp.split(":");
+
+        if(splitTempHp[1] <= 0) {
+          setWinnerFlag(2);
+        }
+        else if (splitTempHp2[1] <= 0){
+          setWinnerFlag(1);
+        }
+        console.log (splitTempHp[1]);
+        console.log (splitTempHp2[1]);
+        tempSelectedPokemon.hp = splitTempHp[1];
+        tempRandomPokemon.hp = splitTempHp2[1];
+        setPokemonInfo(tempSelectedPokemon);
+        setRandomPokemon(tempRandomPokemon);
+      }
+      else {
+        console.log("Pokemon info or random pokemon is null");
+      }
+  
+      // Update battleInfo with the data received from the backend
+      setBattleInfo(data);
+      console.log(battleInfo);
     } catch (error) {
-      alert(`Error: ${error.message}`);
+      alert(`Error: this is line 117 ${error.message}`);
     }
   };
 
@@ -129,8 +154,8 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
             className="menu"
             style={{
               position: "absolute",
-              top: "-200%",
-              right: "100%",
+              top: "-100%",
+              right: "45%",
               maxHeight: "560px",
               overflowY: "auto",
               zIndex: 1,
@@ -145,7 +170,7 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
                 <li className="menu-item" key={index}>
                   <button
                     onClick={() => handleMoveSelect(move)}
-                    disabled={confirmed}
+                    // disabled={confirmed}
                   >
                     {move}
                   </button>
@@ -173,10 +198,11 @@ function MovePoolDropDown({ selectedPokemon, pokemonList, onSelectMoves }) {
                       selectedMoves[index],
                       randomOpponentMove()
                     )
-                  }
-                >
+                  } //disabled={confirmed}
+                 >
                   {" "}
                   {move}
+                 
                 </button>
               </li>
             ))}

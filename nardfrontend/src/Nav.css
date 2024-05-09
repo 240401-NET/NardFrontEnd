@@ -36,19 +36,12 @@
   background-color: rgb(161, 197, 220);
   transform: scale(1.1);
 }
-/* #uslogo {
-  font-weight: bolder;
-  font-size: 3vh;
-  height: 5vh;
-  size: 20px;
-  opacity: 0.65;
-} */
+
 
 #logous {
-  /* font-weight: bolder; */
+
   font-size: 20vh;
   height: 11vh;
-  /* size: 20px; */
   opacity: 0.65;
 }
 
@@ -89,24 +82,6 @@ a:visited {
   text-decoration: none;
 }
 
-/* #VsBanner {
-  font-size: 35px;
-  color: rgb(211, 211, 227);
-  border: 10px rgb(169, 174, 99) double;
-
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-} */
-
-/* .darkBG {
-  background-color: rgba(0, 0, 0, 0.2);
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-} */
 \ .centered {
   position: fixed;
   top: 50%;
@@ -222,4 +197,8 @@ a:visited {
   box-shadow: none;
   transform: none;
   background: whitesmoke;
+}
+
+footer {
+  justify-content: left;
 }

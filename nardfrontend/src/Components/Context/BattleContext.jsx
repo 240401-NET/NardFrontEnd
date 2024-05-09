@@ -5,9 +5,8 @@ const BattleContext = createContext();
 const BattleContextProvider = ({ children }) => {
   const [battleInfo, setBattleInfo] = useState(null);
   const [battleLog, setBattleLog] = useState([]);
-  const [updatedBattleData, setUpdatedBattleData] = useState({
-    Summary: "this. is. a. sentence",
-  });
+  const [updatedBattleData, setUpdatedBattleData] = useState("this. is. a. sentence");
+  const [winnerFlag, setWinnerFlag] = useState(0);
 
   return (
     <BattleContext.Provider
@@ -18,6 +17,8 @@ const BattleContextProvider = ({ children }) => {
         setBattleLog,
         updatedBattleData,
         setUpdatedBattleData,
+        winnerFlag,
+        setWinnerFlag,
       }}
     >
       {children}

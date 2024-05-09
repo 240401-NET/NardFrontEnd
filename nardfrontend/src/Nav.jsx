@@ -3,15 +3,12 @@ import "./Nav.css";
 import RulesModal from "./Components/RulesModal";
 import logoNard from "./Assets/logoNard.jpg";
 import ClearDataButton from "./Components/BattlePages/ClearDataButton";
+import WinnerModal from "./Components/BattlePages/WinnerModal";
 
 function Nav() {
   return (
     <nav id="thenav" className="flexbetween">
       <ul>
-        {/* /* add selection path link here? */}
-        {/* <li className="navitem">
-          <NavLink to="/">Home</NavLink>
-        </li> */}
         <li className="navitem">
           <NavLink to="/">Home</NavLink>
         </li>
@@ -22,6 +19,7 @@ function Nav() {
           <NavLink to="/leaderboard">Leaderboard Page</NavLink>
         </li>
       </ul>
+      <WinnerModal />
       <div>
         <ClearDataButton />
       </div>
@@ -29,15 +27,11 @@ function Nav() {
         <RulesModal />
       </div>
       <div>
-        {/* <div className="container" id="RightNav"> */}
-        {/* <div style={{ display: "flex", justifyContent: "right" }} id="uslogo"> */}
-        {/* <NavLink to="https://github.com/240401-NET/NardBackEnd/blob/main/README.md"> */}
-        <img id="logous" src={logoNard} />
+       
+        <img id="logous"  alt="Our Logo" src={logoNard} />
       </div>
 
-      {/* </div> */}
-
-      {/* </div> */}
+ 
     </nav>
   );
 }

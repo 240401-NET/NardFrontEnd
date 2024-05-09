@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// Import CSS file for styling modal
 
 function RulesModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +10,7 @@ function RulesModal() {
   return (
     <div>
       <button onClick={toggleModal} id="RButt">
-        Rules
+      Not Winner
       </button>
 
       {isOpen && (

@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PlayersSpritesDisplay from "../PlayersSpritesDisplay";
 import MovePoolDropDown from "./MovePoolDropDown";
-import PlayerBattleSprite from "../BattlePages/PlayerBattleSprite";
-import RandomizedOpponentButton from "./RandomizedOpponentButton";
-import StartBattleMusicButton from "./StartBattleMusicButton";
 import { PokemonContext } from "../Context/PokemonContext";
 
 function SelectPokemonDropSearch() {
@@ -12,26 +9,24 @@ function SelectPokemonDropSearch() {
     setSelectedPokemon,
     selectedMoves,
     setSelectedMoves,
+    pokemonInfo,
+    setPokemonInfo,
   } = useContext(PokemonContext);
   const [pokemonList, setPokemonList] = useState([]);
   const [pokemonListError, setPokemonListError] = useState("");
   const [filteredPokemonList, setFilteredPokemonList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [PokemonInfo, setPokemonInfo] = useState("");
 
-  // Function to handle selecting a Pokémon
   const handleSelectPokemon = (pokemon) => {
     setSelectedPokemon(pokemon);
-    setSelectedMoves([]); // Reset selected moves when a new Pokemon is chosen
+    setSelectedMoves([]);
   };
   const handleSelectMoves = (moves) => {
     setSelectedMoves(moves);
   };
 
-  // Function to fetch Pokémon data and populate the dropdown
   const fetchPokemonList = async () => {
     try {
-      // Fetch Pokémon data from the server using the getAllPokemon endpoint
       const response = await fetch(
         "http://localhost:5019/Pokemon/getAllPokemon"
       );
@@ -39,7 +34,6 @@ function SelectPokemonDropSearch() {
         throw new Error("Failed to fetch Pokémon data");
       }
       const data = await response.json();
-      // Set the fetched Pokémon data to the state
       setPokemonList(data);
       setFilteredPokemonList(data);
     } catch (error) {
@@ -50,7 +44,7 @@ function SelectPokemonDropSearch() {
   };
 
   const fetchPokemonInfo = async (pokemonName) => {
-    // Fetch Pokémon data from the server using the searchPokemon endpoint
+   
     try {
       const response = await fetch(
         `http://localhost:5019/Pokemon/searchPokemon/${pokemonName}`
@@ -66,10 +60,9 @@ function SelectPokemonDropSearch() {
       console.error("Error fetching Pokemon data:", error);
     }
   };
-  // Fetch Pokémon data on component mount
+
   useEffect(() => {
     fetchPokemonList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -90,8 +83,8 @@ function SelectPokemonDropSearch() {
     console.log("Pokemon list:", pokemonList); // Log the pokemonList state
   }, [pokemonList]);
   useEffect(() => {
-    console.log("Pokemon Info:", PokemonInfo); // Log the pokemonList state
-  }, [PokemonInfo]);
+    console.log("Pokemon Info:", pokemonInfo); // Log the pokemonList state
+  }, [pokemonInfo]);
 
   useEffect(() => {
     console.log("Selected Pokemon:", selectedPokemon);
@@ -100,13 +93,12 @@ function SelectPokemonDropSearch() {
   useEffect(() => {
     console.log("Selected Moves:", selectedMoves);
   }, [selectedMoves]);
-  console.log(PokemonInfo);
+  console.log(pokemonInfo);
 
   return (
     <div className="selection-page">
       {pokemonListError && <p>{pokemonListError}</p>}
 
-      {/* Search bar */}
       <input
         type="text"
         placeholder="Search Pokémon..."
@@ -114,7 +106,6 @@ function SelectPokemonDropSearch() {
         onChange={(e) => setSearchTerm(e.target.value)}
         id="SPsearchbar"
       />
-      {/* Dropdown to select Pokémon */}
       <select id="SPButt" onChange={(e) => handleSelectPokemon(e.target.value)}>
         <option value="">View Pokemon Options</option>
         {filteredPokemonList.map((pokemon) => (
@@ -124,16 +115,15 @@ function SelectPokemonDropSearch() {
         ))}
       </select>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {/* <span> */}
         <>
-          {PokemonInfo ? (
+          {pokemonInfo ? (
             <div>
               <h2 style={{ marginTop: "13vh" }}>Stats</h2>
               <ul style={{ fontWeight: "bolder", fontSize: "20px" }}>
-                <li>HP: {PokemonInfo.hp}</li>
-                <li>Attack: {PokemonInfo.atk}</li>
-                <li>Defense: {PokemonInfo.def}</li>
-                <li>Speed: {PokemonInfo.spd}</li>
+                <li>HP: {pokemonInfo.hp}</li>
+                <li>Attack: {pokemonInfo.atk}</li>
+                <li>Defense: {pokemonInfo.def}</li>
+                <li>Speed: {pokemonInfo.spd}</li>
               </ul>{" "}
             </div>
           ) : null}
@@ -142,31 +132,23 @@ function SelectPokemonDropSearch() {
           <h1 style={{ marginLeft: "95px", fontSize: "65px" }} id="PlayerTitle">
             {selectedPokemon.toUpperCase()}
           </h1>
-          {/* Display selected Pokémon sprite */}
           <PlayersSpritesDisplay
             pokemonList={pokemonList}
             selectedPokemon={selectedPokemon}
           />
         </div>
-        {/* </span> */}
       </div>
-
-      {/* Display selected Pokémon moves */}
       {selectedPokemon && (
         <MovePoolDropDown
           selectedPokemon={selectedPokemon}
           pokemonList={pokemonList}
           onSelectMoves={handleSelectMoves}
-          // battleId={battleId}
-          // Pass onSelectMoves function as a prop
         />
       )}
 
-      {/* Display selected Pokémon details */}
       {selectedPokemon && (
         <div>
-          {/* {PokemonInfo} */}
-          {/* You can display other details of the selected Pokémon here  */}
+         
         </div>
       )}
     </div>

@@ -4,6 +4,7 @@ const PokemonContext = createContext();
 
 const PokemonContextProvider = ({ children }) => {
   const [selectedPokemon, setSelectedPokemon] = useState("");
+  const [pokemonInfo, setPokemonInfo] = useState("");
   const [selectedMoves, setSelectedMoves] = useState([]);
   const [randomPokemon, setRandomPokemon] = useState(null);
   const [randomMoves, setRandomMoves] = useState([]);
@@ -25,6 +26,8 @@ const PokemonContextProvider = ({ children }) => {
         setCreatedBattle,
         open,
         setOpen,
+        pokemonInfo,
+        setPokemonInfo,
       }}
     >
       {children}

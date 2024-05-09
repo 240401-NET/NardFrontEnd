@@ -4,7 +4,6 @@ import BattlePage from "./Components/BattlePages/BattlePage";
 import Nav from "./Nav";
 import Leaderboard from "./Components/HomePages/Leaderboard";
 import Pokexamp4 from "./Assets/Pokexamp4.png";
-// import Pokexamp from "./Assets/Pokexamp.png";
 import HomePage from "./Components/HomePages/HomePage";
 import Footer from "./Components/Footer";
 import Pokedome from "./Components/Pokedome";
@@ -16,14 +15,15 @@ function App() {
       <BrowserRouter>
         <Nav />
         <header>
+        
           <div
             id="bitty"
             className="App-header"
             style={{
               backgroundImage: `url(${Pokexamp4})`,
-              backgroundSize: "cover", // Set backgroundSize to cover
-              backgroundRepeat: "no-repeat", // Prevent background from repeating
-              backgroundPosition: "center", // Center the background image
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center", 
               opacity: ".8",
             }}
           >
@@ -35,22 +35,16 @@ function App() {
 
         <div className="background-container" style={{ zIndex: -2000 }}></div>
 
-        {/* <SelectionPage /> */}
-        {/* <BattlePage /> */}
-
-        <div>
+        <div className="body">
           {" "}
-          {/* //add begin button home path, change selection path */}
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/battle" element={<BattlePage />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
           </Routes>
         </div>
-
-        <div>
           <Footer />
-        </div>
       </BrowserRouter>
     </AppProvider>
   );

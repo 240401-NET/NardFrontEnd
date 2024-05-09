@@ -23,11 +23,10 @@ function StartBattleMusicButton() {
   const playVideo = () => {
     setTimeout(() => {
       videoRef.current.play();
-    }, 1000); // Delay play() method call by 1 second (adjust as needed)
+    }, 1000);
   };
 
-  const audioRef = useRef(null); // Ref to store the audio element
-
+  const audioRef = useRef(null);
   const playBattleMusic = () => {
     const randomIndex = Math.floor(Math.random() * 2);
 
@@ -40,29 +39,27 @@ function StartBattleMusicButton() {
     audio.loop = true;
     audio.play();
     audioRef.current = audio;
-    // return audio;
+  
   };
 
   const pauseBattleMusic = () => {
     if (audioRef.current) {
-      audioRef.current.pause(); // Pause the audio
+      audioRef.current.pause();
     }
   };
 
   const handleVideoEnd = () => {
-    // Hide the video when it ends
     videoRef.current.style.display = "none";
   };
 
-  const handleBeginBattle = () => {
+  const handleBeginBattle = async () => {
     console.log(selectedMoves);
     if (selectedMoves && randomMoves && randomPokemon) {
-      // Construct the URL for creating the battle
       const moves1string = selectedMoves;
       const moves2string = randomMoves;
       const url = `http://localhost:5019/Battle/createBattle/${selectedPokemon}/${randomPokemon.id}/${moves1string}/${moves2string}`;
 
-      fetch(url, {
+      await fetch(url, {
         method: "POST",
       })
         .then((response) => {
@@ -72,8 +69,8 @@ function StartBattleMusicButton() {
           return response.text();
         })
         .then((data) => {
-          setCreatedBattle(data); // Store the created battle data
-          // Handle any further actions with the created battle data
+          setCreatedBattle(data); 
+         
 
           setBattleInfo(JSON.parse(data));
           playBattleMusic();
@@ -98,11 +95,9 @@ function StartBattleMusicButton() {
     handleBeginBattle();
   };
 
-  // const startMessage = "${createdBattle}";
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      {/* <Link to="/battle"> */}
       <div>
         <span style={{ display: "flex", justifyContent: "space-around" }}>
           <button
@@ -138,7 +133,6 @@ function StartBattleMusicButton() {
         </video>
       </div>
       <div className="video-container"></div>
-      {/*Display any other relevant information about the created battle*/}
     </div>
   );
 }

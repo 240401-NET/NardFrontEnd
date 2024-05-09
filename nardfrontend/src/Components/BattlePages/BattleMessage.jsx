@@ -9,7 +9,7 @@ function BattleMessage({}) {
   useEffect(() => {
     console.log(updatedBattleData);
   }, [setUpdatedBattleData]);
-  if (!updatedBattleData || !updatedBattleData.Summary) {
+  if (!updatedBattleData) {
     console.log("Whatever is null");
     return null;
   }
@@ -23,7 +23,7 @@ function BattleMessage({}) {
       <div>
         <h1>Battle Logs:</h1>
         <div style={{}}>
-          {updatedBattleData.Summary.split(". ").map((message, index) => (
+          {updatedBattleData.split(". ").map((message, index) => (
             <div key={index}>{message}</div>
           ))}
         </div>

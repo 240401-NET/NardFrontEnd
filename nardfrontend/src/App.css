@@ -6,22 +6,25 @@
   height: 40vmin;
   pointer-events: none;
 }
-/* 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
+
 
 .App-header {
   background-color: #e8ebf1;
-  min-height: 40vh;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(155, 45, 45);
+}
+
+:root {
+  --window-height-account: calc(100vh - 74px);
+}
+
+.body {
+  min-height: var(--window-height-account);
 }
 
 .App-link {
@@ -39,7 +42,6 @@
 
 #LBButton {
   align-items: left;
-  /* position: absolute; */
   justify-content: left;
   z-index: 10000;
   background-color: rgb(6, 233, 153);
@@ -70,7 +72,7 @@
 
 footer {
   display: flex;
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 8vh;
@@ -79,11 +81,10 @@ footer {
   font-weight: bolder;
   font-size: 18px;
   justify-content: end;
-  /* margin-top: 3vh; */
   z-index: -1;
 }
 
 #footertext {
-  margin-top: 12px;
+  margin-top: 4px;
   justify-content: flex;
 }

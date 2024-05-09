@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 // import OpponentsSpritesDisplay from "../OpponentsSpritesDisplay";
 import { PokemonContext } from "../Context/PokemonContext";
+import { BattleContext } from "../Context/BattleContext";
 
 function RandomizedOpponentButton() {
   const { randomPokemon, setRandomPokemon, randomMoves, setRandomMoves } =
@@ -59,8 +60,6 @@ function RandomizedOpponentButton() {
       >
         Find New Opponent
       </button>
-
-      {/* <div>{error && <p>{error}</p>}</div> */}
       {randomPokemon && (
         <div>
           <div
@@ -78,20 +77,33 @@ function RandomizedOpponentButton() {
             src={randomPokemon.sprite}
             alt={randomPokemon.name}
             style={{
-              transform: "scale(3.5)" /* Magnify the image by scaling it */,
-              transformOrigin: "0 0" /* Set the origin of the transformation */,
-              transition: "transform 0.3s ease" /* Add smooth transition */,
+              transform: "scale(3.0)" ,
+              transformOrigin: "0 0" ,
+              transition: "transform 0.3s ease" ,
             }}
-            // style={{ width: "200px", height: "200px" }}
-            // className="flexaround"
           />
+          <span 
+          style={{ display: "flex",
+            justifyContent: "space-around",
+          }}>
+          <div>
+        <>
+          {randomPokemon ? (
+            <div>
+              <h3 style={{ marginTop: "20vh" }}>Stats</h3>
+              <ul style={{ fontWeight: "bolder", fontSize: "20px" }}>
+                <li>HP: {randomPokemon.hp}</li>
+                <li>Attack: {randomPokemon.atk}</li>
+                <li>Defense: {randomPokemon.def}</li>
+                <li>Speed: {randomPokemon.spd}</li>
+              </ul>{" "}
+            </div>
+          ) : null}
+        </>
+        </div>
           {randomMoves && randomMoves.length > 0 && (
-            <div
-              style={{
-                marginTop: "20vh",
-              }}
-            >
-              <h3 id="MovesTitle">MOVES:</h3>
+            <div>
+              <h3 id="MovesTitle" style={{ marginTop: "20vh" }}>MOVES:</h3>
               <ol id="MovesSub">
                 {randomMoves &&
                   randomMoves.split(",").map((move, index) => (
@@ -102,6 +114,7 @@ function RandomizedOpponentButton() {
               </ol>
             </div>
           )}
+          </span>
         </div>
       )}
     </div>
